@@ -15,11 +15,27 @@ model Tenant {
   subscriptionStatus String?
   foundersTier       Boolean  @default(false)
   deviceLimit        Int      @default(4)
+  wpbsGrantedAt      DateTime?
+  wpbsExpiresAt      DateTime?
+  wpbsSourceIp       String?
   createdAt          DateTime @default(now())
   updatedAt          DateTime @updatedAt
   users              User[]
   devices            Device[]
   scans              Scan[]
+  wpbsGrants         WpbsGrant[]
+}
+
+// Audit rows for WPBS bypass (rate limit + ops visibility). Winter Park Benefit Shop partner flow — see dispatch 008.
+model WpbsGrant {
+  id        String   @id @default(cuid())
+  email     String
+  ip        String
+  tenantId  String
+  tenant    Tenant   @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+
+  @@index([ip, createdAt])
 }
 
 model User {
