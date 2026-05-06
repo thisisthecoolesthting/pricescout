@@ -15,27 +15,41 @@ export default function HowItWorksPage() {
         <div className="mx-auto max-w-3xl">
           <span className="pill bg-mint-500/10 text-mint-600">HOW IT WORKS</span>
           <h1 className="gradient-text mb-8 mt-4 text-4xl font-bold tracking-tight">
-            Five beats every pricing crew recognizes
+            Snap, verdict, save — on phone or laptop
           </h1>
-          <ol className="space-y-10 text-base leading-relaxed text-muted">
+          <ol className="space-y-12 text-base leading-relaxed text-muted">
             <li>
-              <strong className="text-ink">1. Intake hits the sorting room.</strong> Donations pile up — textiles,
-              kitchenware, media, mystery electronics — volunteers grab phones instead of clipboards.
+              <strong className="mb-4 block text-lg text-ink">1. Snap</strong>
+              <div className="mt-4 grid gap-6 md:grid-cols-2">
+                <div className="rounded-2xl border border-line bg-white/80 p-5">
+                  <p className="font-semibold text-ink">On the phone</p>
+                  <p className="mt-2">
+                    Open the {brand.name} app (Android live; iOS in review), allow camera access, point at the item, and
+                    snap.
+                  </p>
+                </div>
+                <div className="rounded-2xl border border-line bg-white/80 p-5">
+                  <p className="font-semibold text-ink">In the browser</p>
+                  <p className="mt-2">
+                    Open <code className="rounded bg-cream px-1.5 py-0.5 text-sm text-ink">/scan</code>, allow camera,
+                    point your laptop&apos;s webcam or USB cam at the item, and snap.
+                  </p>
+                </div>
+              </div>
             </li>
             <li>
-              <strong className="text-ink">2. Scan passes vision first.</strong> Camera reads packaging cues,
-              silhouettes, logos. Barcodes jump the queue when shrink-wrap survives.
+              <strong className="mb-2 block text-lg text-ink">2. Verdict</strong>
+              <p>
+                {brand.name} returns what it is, what it sells for online, and a buy / skip verdict — same pipeline for
+                Expo and for the browser scanner. Barcodes jump the queue when shrink-wrap still cooperates.
+              </p>
             </li>
             <li>
-              <strong className="text-ink">3. Sold comps anchor math.</strong> Medians ignore wishful active listings —
-              marketplace friction subtracts before anyone Sharpies a tag.
-            </li>
-            <li>
-              <strong className="text-ink">4. Shared flip logs settle debates.</strong> Morning shift inherits afternoon
-              honesty — nobody re-litigates tribal lore from sticky notes.
-            </li>
-            <li>
-              <strong className="text-ink">5. Tags hit the floor confidently.</strong> Maybe stays Maybe — credibility beats fake precision every weekend.
+              <strong className="mb-2 block text-lg text-ink">3. Save</strong>
+              <p>
+                Paid tiers write scans into the shared flip log so the whole crew sees the same history — whether those
+                scans came from phones on the floor or a back-room laptop.
+              </p>
             </li>
           </ol>
           <div className="mt-12 flex flex-wrap gap-4">

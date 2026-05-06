@@ -4,7 +4,8 @@ import { brand } from "@/lib/brand";
 
 export const metadata = {
   title: `Scan — ${brand.name}`,
-  description: "Point your phone at any thrift-store item. Get the resale price, the buy/skip verdict, and the right tag price in seconds.",
+  description:
+    "Point your phone or your laptop webcam at any donation, garage-sale find, or estate-sale lot. Get the resale price, the buy/skip verdict, and the right tag price in seconds.",
 };
 
 export default function ScanPage() {
@@ -15,9 +16,16 @@ export default function ScanPage() {
           Scanner
         </h1>
         <p className="mt-2 max-w-2xl text-sm text-brand-ink/75">
-          Point at any donation, garage-sale find, or estate-sale lot. Hit <strong>Snap &amp; identify</strong> and {brand.name} returns what it is, what it sells for online, and a buy / skip verdict. Barcodes read automatically while the camera is open.
+          Point your phone — or your laptop&apos;s webcam — at any donation, garage-sale find, or estate-sale lot. Hit{" "}
+          <strong>Snap &amp; identify</strong> and {brand.name} returns what it is, what it sells for online, and a buy / skip verdict. Barcodes read automatically while the camera is open.
         </p>
       </header>
+
+      <div className="mb-6 flex flex-wrap gap-2">
+        <span className="pill bg-mint-500/10 text-mint-600">Browser webcam</span>
+        <span className="pill bg-mint-500/10 text-mint-600">Phone (Android live)</span>
+        <span className="pill bg-line/40 text-soft">iOS in review</span>
+      </div>
 
       <Scanner />
 

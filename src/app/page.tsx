@@ -35,14 +35,14 @@ export default function HomePage() {
                 Stop guessing what donations are worth.
               </h1>
               <p className="mb-8 max-w-xl text-lg text-muted sm:text-xl">
-                {brand.name} puts a camera in your crew&rsquo;s pocket. Snap any donation, garage-sale find, or estate-sale lot — get the resale price and the right tag price in seconds. Up to 4 phones per subscription so the whole back room scans at once.
+                {brand.name} runs on the phones already in your crew&apos;s pockets — or on the back-room laptop with a webcam pointed at the triage table. Either camera, same answer in seconds: what is it, what does it sell for, what should the tag say? Up to 4 scanner installs on every paid tier — phones and browsers both count.
               </p>
               <div className="mb-6">
                 <TrustStrip
                   items={[
-                    "Up to 4 scanner installs",
-                    "Android live",
-                    "iOS in review",
+                    "Phones + browsers both count",
+                    "Android live · iOS in review",
+                    "Webcam works on any laptop",
                   ]}
                 />
               </div>
@@ -59,18 +59,27 @@ export default function HomePage() {
                 Or watch the 90-second tour &rarr;
               </Link>
               <p className="text-sm text-soft">
-                Web in any phone browser &middot; Android live &middot; iOS in review
+                Phone in your pocket &middot; Webcam on the back-room laptop &middot; Tablet at the checkout counter — pick your camera.
               </p>
             </div>
             <div className="relative flex justify-center lg:justify-start">
-              <Image
-                src="/images/hero-phone-mockup.jpg"
-                alt={`${brand.name} app showing thrift-store item valuation`}
-                width={440}
-                height={587}
-                className="animate-float w-full max-w-[440px] rounded-3xl shadow-[0_30px_60px_-20px_rgba(17,203,157,0.25)]"
-                priority
-              />
+              <div className="grid w-full max-w-[920px] grid-cols-1 gap-6 sm:grid-cols-2">
+                <Image
+                  src="/images/hero-phone-mockup.jpg"
+                  alt={`${brand.name} on a phone scanning a thrift-store item`}
+                  width={440}
+                  height={587}
+                  className="animate-float w-full max-w-[440px] justify-self-center rounded-3xl shadow-[0_30px_60px_-20px_rgba(17,203,157,0.25)] sm:justify-self-end"
+                  priority
+                />
+                <Image
+                  src="/images/hero-laptop-webcam.jpg"
+                  alt={`${brand.name} in a laptop browser at the triage table with a USB webcam`}
+                  width={440}
+                  height={587}
+                  className="h-[587px] w-full max-w-[440px] justify-self-center rounded-3xl object-cover shadow-[0_30px_60px_-20px_rgba(17,203,157,0.2)] sm:justify-self-start"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -88,7 +97,7 @@ export default function HomePage() {
 
           <div className="mx-auto max-w-3xl text-center text-base leading-relaxed text-muted sm:text-lg">
             <p>
-              The sorting room of a thrift store. The dining room of an estate sale. The driveway on Saturday morning. The flea-market booth at 6am setup. {brand.name} identifies what each item is from a photo, pulls real eBay sold-listing data, and tells you what to put on the tag — across up to 4 phones at once.
+              The sorting room of a thrift store. The dining room of an estate sale. The driveway on Saturday morning. The flea-market booth at 6am setup. {brand.name} identifies what each item is from a photo, pulls real eBay sold-listing data, and tells you what to put on the tag — across up to 4 scanner installs at once (phones and browsers both count).
             </p>
           </div>
 
@@ -150,7 +159,7 @@ export default function HomePage() {
                 <Step
                   n={1}
                   title="Open the scanner"
-                  body={`Open ${brand.name} on any phone in your crew. Web works in the browser; Android lives on Google Play. Allow camera access and you're in.`}
+                  body={`Open ${brand.name} on any phone in your crew, or open /scan in a laptop browser. Android lives on Google Play. Allow camera access and you&apos;re in.`}
                 />
               </Reveal>
               <Reveal delay={120}>
@@ -265,7 +274,7 @@ export default function HomePage() {
                 </Link>
               </div>
               <p className="text-sm text-slate-400">
-                Web in any phone browser &middot; Android live on Google Play &middot; iOS in App Store review
+                Phone in your pocket &middot; Webcam on the back-room laptop &middot; Tablet at checkout — same scanner, same verdicts
               </p>
             </div>
             <div className="flex justify-center lg:justify-end">

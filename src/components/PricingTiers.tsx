@@ -134,6 +134,11 @@ export function PricingTiers() {
               ))}
             </ul>
 
+            <p className="mb-6 border-t border-line/60 pt-4 text-center text-xs leading-relaxed text-muted">
+              <span className="font-semibold text-ink">4 scanner installs included.</span> Mix and match — a phone
+              counts as one install, a registered browser counts as one install. Add more for $15/mo per device.
+            </p>
+
             <div className="mt-auto">
               <Link
                 href={t.ctaHref}

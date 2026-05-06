@@ -1,9 +1,14 @@
 import type { SpineSixModel } from "@/components/marketing/SpineSixSections";
 
-const commonTrust = ["Up to 4 scanner installs · Android live · iOS soon"];
+const commonTrust = [
+  "Phones + browsers both count",
+  "Android live · iOS in review",
+  "Webcam works on any laptop",
+];
 
 export const FEATURE_SLUGS = [
   "visual-identification",
+  "browser-scanner",
   "barcode-fast-path",
   "shared-flip-log",
   "device-management",
@@ -51,6 +56,7 @@ const pages: Record<FeatureSlug, SpineSixModel> = {
       },
     ],
     relatedFeatures: [
+      { label: "Browser scanner", href: "/features/browser-scanner" },
       { label: "Barcode fast path", href: "/features/barcode-fast-path" },
       { label: "Tag price suggestions", href: "/features/tag-price-suggestions" },
     ],
@@ -61,6 +67,56 @@ const pages: Record<FeatureSlug, SpineSixModel> = {
     finalCta: {
       title: "Put visual identification on every lane",
       subtitle: "Train staff once — every scanner inherits the same identification playbook.",
+      pricingLine: "$29 Week Pass · $49/mo Pro · $699 Founders Lifetime (cap 100)",
+    },
+  },
+  "browser-scanner": {
+    eyebrow: "FEATURE DEEP DIVE",
+    title: "Scan from any laptop with a webcam",
+    subtitle:
+      "Open /scan in Chrome or Edge, allow camera access, and use your built-in webcam, USB overhead camera, or POS cam — same verdict UI as the phone app. Each registered browser counts as one of your four included scanner installs.",
+    trustStrip: commonTrust,
+    problem: {
+      title: "Problem it solves",
+      body: "Back-room triage tables already have a laptop — crews should not need a second workflow just to price donations.",
+    },
+    audience: {
+      title: "Who it is for",
+      body: "Thrift sorting rooms, estate-sale staging desks, and checkout counters where a tablet or laptop stays fixed while phones walk the floor.",
+    },
+    capabilities: [
+      "Uses getUserMedia for live preview, barcode decode, and capture in the browser",
+      "Works with built-in webcams, USB document cameras, and most plug-and-play overhead cams",
+      "Pairs with the same /api/identify pipeline and flip log as Expo — one subscription, mixed surfaces",
+      "Kiosk-style /scan sessions stay readable on a large screen for walk-up questions (full kiosk mode ships separately)",
+    ],
+    steps: [
+      "Open /scan on the laptop you already use at the triage table.",
+      "Allow camera access when the browser prompts — pick the correct device if several are listed.",
+      "Point the sweater, box, or lot into frame and tap Snap & identify.",
+      "Read the verdict, tag price, and barcode hint — then move the item down the belt.",
+    ],
+    faq: [
+      {
+        q: "Does a browser install count toward the four included scanners?",
+        a: "Yes. Each registered browser session counts the same as a phone — the four-install pool is intentionally surface-agnostic.",
+      },
+      {
+        q: "Can we run this on a checkout tablet?",
+        a: "If the tablet browser exposes a camera, /scan behaves the same way — mount it where shoppers can see the verdict clearly.",
+      },
+    ],
+    relatedFeatures: [
+      { label: "Visual identification", href: "/features/visual-identification" },
+      { label: "Device management", href: "/features/device-management" },
+    ],
+    relatedIndustries: [
+      { label: "Thrift stores", href: "/industries/thrift-stores" },
+      { label: "Flea markets", href: "/industries/flea-markets" },
+    ],
+    finalCta: {
+      title: "Try the browser scanner now — no install",
+      subtitle: "Open /scan on any crew laptop with a webcam and run a real identification in the public sandbox.",
       pricingLine: "$29 Week Pass · $49/mo Pro · $699 Founders Lifetime (cap 100)",
     },
   },
@@ -143,6 +199,7 @@ const pages: Record<FeatureSlug, SpineSixModel> = {
       },
     ],
     relatedFeatures: [
+      { label: "Browser scanner", href: "/features/browser-scanner" },
       { label: "Device management", href: "/features/device-management" },
       { label: "Flip log export", href: "/features/flip-log-export" },
     ],
@@ -189,6 +246,7 @@ const pages: Record<FeatureSlug, SpineSixModel> = {
       },
     ],
     relatedFeatures: [
+      { label: "Browser scanner", href: "/features/browser-scanner" },
       { label: "Shared flip log", href: "/features/shared-flip-log" },
       { label: "Tag price suggestions", href: "/features/tag-price-suggestions" },
     ],
