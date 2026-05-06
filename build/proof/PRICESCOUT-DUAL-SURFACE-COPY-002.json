@@ -25,5 +25,14 @@
     "note": "Before/after screenshots not attached in CI. Spot-check: / (hero two-up), /scan (chips), /pricing (per-tier device line + FAQ), /how-it-works, /features, /features/browser-scanner, industries thrift-stores | estate-sales | yard-sales | flea-markets."
   },
   "operator_followups": [],
-  "commits_placeholder": "filled_after_git_commit"
+  "commits": [
+    {
+      "sha": "12fe4569e94419c013c6eb001bbcef0088dfdf2a",
+      "message": "feat(marketing): dual phone + browser webcam story (dispatch 002)"
+    },
+    {
+      "sha": "8ac85aa73d190e424cb6ee5e96d185acb6cef489",
+      "message": "chore: add commit SHA to dispatch 002 proof"
+    }
+  ]
 }
