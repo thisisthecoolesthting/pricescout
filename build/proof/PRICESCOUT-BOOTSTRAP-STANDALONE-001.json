@@ -14,6 +14,10 @@
     {
       "sha": "7bc8866741bc64d71198947bce4c5fe62f6e972e",
       "message": "chore: dispatch 001 proof JSON and operator inbox reply"
+    },
+    {
+      "sha": "29bf14aca15674929f440fc6cbc6216c38eba3ec",
+      "message": "docs: align proof JSON chore commit SHA with git history"
     }
   ],
   "tracked_files_in_initial_commit": 136,
