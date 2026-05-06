@@ -21,6 +21,8 @@ git push -u origin main
 
 If the repo was already renamed or empty, adjust remote URL accordingly. Open the bootstrap PR separately from dispatch 002.
 
+**Cursor note:** `gh pr create` was attempted before `origin` existed and failed with **`no git remotes found`** (expected). After `git remote add` + `git push`, run `gh pr create` from the same clone (or open the PR in the GitHub UI).
+
 ## Operator-only — VPS + smoke
 
 After `main` is pushed:
