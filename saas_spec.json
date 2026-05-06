@@ -1,0 +1,98 @@
+{
+  "name": "PriceScout",
+  "slug": "thrift-store-scanner",
+  "name_chosen_at": "2026-04-29",
+  "repo_url": "https://github.com/thisisthecoolesthting/thrift-store-scanner",
+  "live_url": "https://pricescout.pro",
+  "billing_provider": "stripe",
+  "status": "scaffold",
+  "category": "thrift_store_tools",
+  "audience": "Thrift store owners and staff, estate sale operators, yard sale runners, flea market dealers, and the resellers who feed them. B2B-leaning — designed for crews of 2-5 people scanning donation piles or sale tables together.",
+  "value_prop": "Run a thrift store, estate sale, or yard sale? Stop guessing what donations are worth. Point a phone at any item, get the resale price in seconds. Up to 4 phones per subscription so your whole crew scans at once.",
+  "primary_input": "phone_camera_image",
+  "fallbacks": ["barcode_upc_isbn", "manual_text_search"],
+  "device_policy": {
+    "included_per_subscription": 4,
+    "addon_price_per_device_monthly_usd": 15,
+    "addon_stripe_env_var": "STRIPE_PRICE_DEVICE_ADDON_MONTHLY",
+    "note": "Every paid tier includes 4 active scanner installs (Android first, iOS later). Stores with bigger crews add scanners at $15/mo each. License keys bind to install-id; operator can rotate one out and add another anytime via the app's Devices tab."
+  },
+  "pricing_tiers": [
+    {
+      "id": "week_pass",
+      "name": "Week Pass",
+      "weekly_usd": 29,
+      "interval": "week",
+      "stripe_env_var": "STRIPE_PRICE_WEEK_PASS",
+      "features": [
+        "7 full days of unlimited scanning",
+        "Up to 4 scanner installs",
+        "Perfect for one-weekend estate or yard sales",
+        "No auto-renew"
+      ]
+    },
+    {
+      "id": "pro_monthly",
+      "name": "Pro Monthly",
+      "monthly_usd": 49,
+      "interval": "month",
+      "stripe_env_var": "STRIPE_PRICE_PRO_MONTHLY",
+      "features": [
+        "Unlimited scans across the team",
+        "Up to 4 scanner installs included",
+        "eBay sold-comp lookup",
+        "Buy / skip verdicts + net-margin math",
+        "Shared flip log across the crew",
+        "Email support"
+      ]
+    },
+    {
+      "id": "pro_annual",
+      "name": "Pro Annual",
+      "annual_usd": 490,
+      "monthly_equivalent_usd": 40.83,
+      "savings_pct": 17,
+      "interval": "year",
+      "stripe_env_var": "STRIPE_PRICE_PRO_ANNUAL",
+      "features": [
+        "Everything in Pro Monthly",
+        "Up to 4 scanner installs included",
+        "Save ~17% vs monthly",
+        "10 months for the price of 12",
+        "Best for thrift stores running year-round"
+      ]
+    },
+    {
+      "id": "founders_lifetime",
+      "name": "Founders Lifetime",
+      "one_time_usd": 699,
+      "interval": "lifetime",
+      "stripe_env_var": "STRIPE_PRICE_FOUNDERS_LIFETIME",
+      "cap": 100,
+      "stripe_metadata": {
+        "lifetime_cap": "100",
+        "tier_kind": "founders_promo"
+      },
+      "features": [
+        "Everything in Pro, forever",
+        "Up to 4 scanner installs included, forever",
+        "First 100 customers only",
+        "No subscription, no renewals",
+        "Founders badge in app"
+      ]
+    }
+  ],
+  "pricing_notes": "Repositioned 2026-04-29 around thrift stores / estate sales / yard sales as primary buyer (multi-staff crews), with individual resellers secondary. Four tiers: Week Pass $29/wk, Pro Monthly $49/mo, Pro Annual $490/yr (~17% saving), Founders Lifetime $699 once (cap 100). Every tier includes 4 scanner installs; additional scanners are +$15/mo each metered separately via STRIPE_PRICE_DEVICE_ADDON_MONTHLY. Stripe Price IDs are immutable — any future tier change creates new IDs, old ones archived after env swap.",
+  "sender_domain": "pricescout.pro",
+  "stripe_webhook_path": "/api/billing/webhook",
+  "vision_provider": "anthropic_or_openrouter",
+  "vision_notes": "Primary: Claude Haiku (cheap) for first-pass identify; escalate to Claude Sonnet for ambiguous items. Alternate: OpenRouter (Gemini Flash for cost). Image is sent server-side; never store raw images by default — ephemeral lookup only.",
+  "comp_provider": "stub_until_picked",
+  "comp_options_to_evaluate": [
+    "eBay Browse API (sold-listings via /buy/marketplace_insights/v1_beta/item_sales — limited, US-only, requires application)",
+    "eBay Finding API (active listings only, no sold; use as price-floor proxy)",
+    "Keepa (Amazon-only, but covers a huge chunk of branded thrift inventory)",
+    "Mercari/Poshmark scraping (ToS-fragile)",
+    "ScrapingBee/Apify managed scraper (paid, ToS-shifting onto vendor)"
+  ]
+}

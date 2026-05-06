@@ -1,0 +1,79 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Tenant {
+  id                 String   @id @default(cuid())
+  name               String
+  slug               String   @unique
+  stripeCustomerId   String?
+  subscriptionStatus String?
+  foundersTier       Boolean  @default(false)
+  deviceLimit        Int      @default(4)
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+  users              User[]
+  devices            Device[]
+  scans              Scan[]
+}
+
+model User {
+  id           String    @id @default(cuid())
+  email        String    @unique
+  name         String
+  passwordHash String
+  role         String
+  tenantId     String
+  tenant       Tenant    @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  sessions     Session[]
+  scans        Scan[]
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+}
+
+model Session {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt DateTime
+}
+
+model Device {
+  id                 String    @id @default(cuid())
+  tenantId           String
+  tenant             Tenant    @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  name               String
+  installFingerprint String
+  lastSeenAt         DateTime?
+  status             String
+  scans              Scan[]
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+}
+
+model Scan {
+  id                   String   @id @default(cuid())
+  tenantId             String
+  userId               String
+  deviceId             String?
+  identifyTitle        String?
+  identifyCategory     String?
+  identifyConfidence   Float?
+  compMedian           Float?
+  compSampleSize       Int?
+  compSource           String?
+  verdict              String?
+  costBasis            Float?
+  netUsd               Float?
+  scoreNumeric         Float?
+  imageUrl             String?
+  scannedAt            DateTime @default(now())
+  tenant               Tenant   @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  user                 User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  device               Device?  @relation(fields: [deviceId], references: [id])
+}
