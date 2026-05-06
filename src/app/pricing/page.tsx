@@ -1,5 +1,17 @@
 import { PricingTiers } from "@/components/PricingTiers";
+import { FAQ } from "@/components/FAQ";
 import { brand } from "@/lib/brand";
+
+const PRICING_DEVICE_FAQ = [
+  {
+    q: "Does the back-room laptop count toward the 4 scanner installs?",
+    a: "Yes. Each registered browser counts as one install, same as a phone. The 4-included pool covers any mix.",
+  },
+  {
+    q: "What if my laptop loses its registration?",
+    a: "Browsers re-register on first scan after a session expires. We don't double-charge a device that legitimately re-paired itself within 30 days.",
+  },
+];
 
 export const metadata = {
   title: `Pricing — ${brand.name}`,
@@ -18,6 +30,10 @@ export default function PricingPage() {
         </div>
         <div className="mt-16">
           <PricingTiers />
+        </div>
+        <div className="mx-auto mt-14 max-w-3xl">
+          <h2 className="mb-6 text-center text-xl font-semibold text-ink">Scanner installs</h2>
+          <FAQ items={PRICING_DEVICE_FAQ} />
         </div>
         <div className="mx-auto mt-12 max-w-2xl text-center text-sm text-soft">
           <p>

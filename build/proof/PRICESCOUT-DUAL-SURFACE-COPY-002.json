@@ -1,0 +1,29 @@
+{
+  "dispatch_id": "PRICESCOUT-DUAL-SURFACE-COPY-002",
+  "branch": "feat/dual-surface-copy",
+  "completed_at": "2026-05-06T01:35:00.000Z",
+  "depends_on": ["PRICESCOUT-BOOTSTRAP-STANDALONE-001"],
+  "summary": "Dual camera (phone + browser webcam) surfaced on home hero, /scan, pricing + FAQ, four key industries, how-it-works, new /features/browser-scanner; trust strips aligned to spine three-pill pattern.",
+  "asset_notes": {
+    "hero_laptop_webcam": "public/images/hero-laptop-webcam.jpg — generated in-session to match dispatch B scene brief (operator may replace with Leonardo Flux Schnell pipeline output if preferred)."
+  },
+  "tests": {
+    "command": "npm run test",
+    "result": "pass",
+    "summary": "vitest: 2 tests passed"
+  },
+  "typecheck": {
+    "command": "npm run typecheck",
+    "result": "pass"
+  },
+  "build": {
+    "command": "npm run build",
+    "result": "pass",
+    "summary": "50 static pages including /features/browser-scanner; exit 0"
+  },
+  "visual_diff": {
+    "note": "Before/after screenshots not attached in CI. Spot-check: / (hero two-up), /scan (chips), /pricing (per-tier device line + FAQ), /how-it-works, /features, /features/browser-scanner, industries thrift-stores | estate-sales | yard-sales | flea-markets."
+  },
+  "operator_followups": [],
+  "commits_placeholder": "filled_after_git_commit"
+}

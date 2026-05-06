@@ -1,6 +1,10 @@
 import type { SpineSixModel } from "@/components/marketing/SpineSixSections";
 
-const commonTrust = ["Up to 4 scanner installs · Android live · iOS soon"];
+const commonTrust = [
+  "Phones + browsers both count",
+  "Android live · iOS in review",
+  "Webcam works on any laptop",
+];
 
 export const INDUSTRY_SLUGS = [
   "thrift-stores",
@@ -18,7 +22,7 @@ const pages: Record<IndustrySlug, SpineSixModel> = {
     eyebrow: "INDUSTRY SPOTLIGHT",
     title: "Thrift stores pricing donations without slowing the belt",
     subtitle:
-      "Donors watch volunteers sticker piles fast — PriceScout keeps throughput honest while comps stay defensible.",
+      "Most thrift store crews use the phone for the floor and a back-room laptop with an overhead USB cam for the triage table. PriceScout works on both, and a single subscription covers both.",
     trustStrip: commonTrust,
     problem: {
       title: "Problem it solves",
@@ -64,7 +68,7 @@ const pages: Record<IndustrySlug, SpineSixModel> = {
     eyebrow: "INDUSTRY SPOTLIGHT",
     title: "Estate-sale crews tagging houses room-by-room",
     subtitle:
-      "Weekend timelines forgive zero guessing — comps arrive before movers haul leftovers.",
+      "Estate sale crews walk a house — phones win. Buy a Week Pass for the weekend, scan everything, done.",
     trustStrip: commonTrust,
     problem: {
       title: "Problem it solves",
@@ -110,7 +114,7 @@ const pages: Record<IndustrySlug, SpineSixModel> = {
     eyebrow: "INDUSTRY SPOTLIGHT",
     title: "Weekend driveway crews sticker piles fast",
     subtitle:
-      "Kids pricing tubs deserve calm guardrails — comps settle debates instantly.",
+      "Yard sales are phones-in-driveway. Get a Week Pass Friday night, tag the lawn Saturday morning.",
     trustStrip: commonTrust,
     problem: {
       title: "Problem it solves",
@@ -202,7 +206,7 @@ const pages: Record<IndustrySlug, SpineSixModel> = {
     eyebrow: "INDUSTRY SPOTLIGHT",
     title: "Flea booths improvising sunrise setups",
     subtitle:
-      "Twelve-foot tables packed overnight deserve comps before shoppers swarm gates.",
+      "Flea market resellers work fast — phone-first. Some run a counter-top kiosk on a tablet for walk-up customer questions about pricing — that's the kiosk mode at /scan?mode=kiosk (coming soon).",
     trustStrip: commonTrust,
     problem: {
       title: "Problem it solves",
