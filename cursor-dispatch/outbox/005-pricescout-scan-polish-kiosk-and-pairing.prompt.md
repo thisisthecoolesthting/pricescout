@@ -9,13 +9,14 @@ machine: office-pc
 working_dir: E:\Projects\pricescout
 branch: feat/scan-polish-kiosk-pairing
 dispatch_id: PRICESCOUT-SCAN-POLISH-005
-depends_on: [PRICESCOUT-BOOTSTRAP-STANDALONE-001, PRICESCOUT-DUAL-SURFACE-COPY-002]
+depends_on: [PRICESCOUT-BOOTSTRAP-STANDALONE-001, PRICESCOUT-DUAL-SURFACE-COPY-002, PRICESCOUT-SHOP-LANGUAGE-006]
 blockedBy: []
 parallel_safe: false
 order: 5
 agent: cursor
 operator_blocked_on: []
 reply: cursor-dispatch/inbox/2026-04-29-005-pricescout-scan-polish.reply.md
+audience_note: "PriceScout is for thrift-store SHOPS, not flippers. Do NOT introduce flipper-coded language. Use 'tag list' / 'inventory log' instead of 'flip log'. Use 'suggested tag price' instead of 'BUY/SKIP verdict'. Reference memory note project_pricescout_audience_and_features."
 tools: ["read_file", "write_file", "edit_block", "bash_command", "git_operation"]
 dangerously_allow_bash: true
 ---
