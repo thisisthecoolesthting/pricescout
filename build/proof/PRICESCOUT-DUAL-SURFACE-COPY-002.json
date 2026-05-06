@@ -29,10 +29,7 @@
     {
       "sha": "12fe4569e94419c013c6eb001bbcef0088dfdf2a",
       "message": "feat(marketing): dual phone + browser webcam story (dispatch 002)"
-    },
-    {
-      "sha": "8ac85aa73d190e424cb6ee5e96d185acb6cef489",
-      "message": "chore: add commit SHA to dispatch 002 proof"
     }
-  ]
+  ],
+  "notes": "Tip of feat/dual-surface-copy may include follow-up proof SHA commits; primary deliverable is 12fe4569e94419c013c6eb001bbcef0088dfdf2a."
 }
