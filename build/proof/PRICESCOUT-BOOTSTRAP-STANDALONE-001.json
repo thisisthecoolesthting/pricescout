@@ -1,0 +1,52 @@
+{
+  "dispatch_id": "PRICESCOUT-BOOTSTRAP-STANDALONE-001",
+  "branch": "main",
+  "completed_at": "2026-05-06T00:40:00.000Z",
+  "source_path": "C:\\Users\\reasn\\Documents\\Claude\\Projects\\DEv1\\apps\\thrift-store-scanner",
+  "destination_path": "E:\\Projects\\pricescout",
+  "source_sha": "c2c5d61c14b15dc93672cb685d2b224208bf2248",
+  "destination_first_sha": "4bc57342e3c6c631f4314f46525bbc05fa59c2cf",
+  "commits": [
+    {
+      "sha": "4bc57342e3c6c631f4314f46525bbc05fa59c2cf",
+      "message": "feat: bootstrap PriceScout standalone repo from monorepo migration"
+    },
+    {
+      "sha": "bb3b1b8ed0c6c80877559a532ee6be7a65469365",
+      "message": "chore: dispatch 001 proof JSON and operator inbox reply"
+    }
+  ],
+  "tracked_files_in_initial_commit": 136,
+  "files_excluded_from_copy": ["node_modules", ".next", ".env", ".env.local", "dist", "build", ".turbo"],
+  "github_repo": "https://github.com/thisisthecoolesthting/pricescout",
+  "github_push_status": "operator_blocked",
+  "vps_smoke_status": "operator_blocked",
+  "tests": {
+    "command": "npm run test",
+    "result": "pass",
+    "summary": "vitest: 1 file, 2 tests passed (src/lib/api-schemas.test.ts)"
+  },
+  "typecheck": {
+    "command": "npm run typecheck",
+    "result": "pass"
+  },
+  "build": {
+    "command": "npm run build",
+    "result": "pass",
+    "summary": "prisma generate + next build; 49 static pages generated; exit 0"
+  },
+  "smoke_production_url": {
+    "command": "curl -sI https://pricescout.pro",
+    "result": "not_run",
+    "note": "Requires operator after push + VPS remote update"
+  },
+  "supersedes": ["PRICESCOUT-MIRROR-STANDALONE-104"],
+  "operator_followups": [
+    "GitHub: authenticate gh CLI as thisisthecoolesthting (not read-only GITHUB_TOKEN), then run: gh repo rename pricescout --repo thisisthecoolesthting/thrift-store-scanner",
+    "Add remote and push: git remote add origin https://github.com/thisisthecoolesthting/pricescout.git && git push -u origin main (use force only if policy requires)",
+    "Open PR for bootstrap on GitHub if not auto-created: gh pr create --base main --head main --title \"Bootstrap PriceScout standalone\" --body \"Dispatch 001; see build/proof/PRICESCOUT-BOOTSTRAP-STANDALONE-001.json\"",
+    "VPS (SSH): cd /var/www/pricescout && git remote set-url origin https://github.com/thisisthecoolesthting/pricescout.git && git fetch origin && git reset --hard origin/main && npm ci --silent && npx prisma generate && npm run build && pm2 stop pricescout 2>$null; pm2 start npm --name pricescout --update-env -- start && pm2 save && curl -sI https://pricescout.pro",
+    "Keep monorepo apps/thrift-store-scanner for ~1 week as backup per dispatch",
+    "Optional: update DEv1 monorepo CLAUDE.md to note saas_specs/thrift-store-scanner.json now lives primarily in standalone pricescout repo"
+  ]
+}
