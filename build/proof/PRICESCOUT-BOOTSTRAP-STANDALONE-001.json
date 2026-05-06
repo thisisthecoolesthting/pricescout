@@ -12,7 +12,7 @@
       "message": "feat: bootstrap PriceScout standalone repo from monorepo migration"
     },
     {
-      "sha": "bb3b1b8ed0c6c80877559a532ee6be7a65469365",
+      "sha": "7bc8866741bc64d71198947bce4c5fe62f6e972e",
       "message": "chore: dispatch 001 proof JSON and operator inbox reply"
     }
   ],
