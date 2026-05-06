@@ -16,5 +16,14 @@
   "skipped_from_dispatch": [
     "Cross-tenant superuser WPBS grant list / extend / revoke — documented on /admin/team for current org only"
   ],
-  "commits_note": "Primary commit recorded after git commit; see git log feat/wpbs-and-admin-app-download"
+  "commits": [
+    {
+      "sha": "6b96d9a407cfd3768b7e04e5c9d24367a1f5c6ce",
+      "message": "feat: WPBS partner grant + admin mobile app card (dispatch 008)"
+    },
+    {
+      "sha": "8d8286d6447fd20175453e43a05bbb401ee13ed8",
+      "message": "chore(dispatch): move 008 prompt to done/"
+    }
+  ]
 }
