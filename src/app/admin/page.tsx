@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import { getSession } from "@/lib/session";
+import { MobileAppCard } from "@/components/admin/MobileAppCard";
 
 export const dynamic = "force-dynamic";
 
@@ -33,6 +34,8 @@ export default async function AdminDashboardPage() {
         <h1 className="text-3xl font-bold text-ink">Dashboard</h1>
         <p className="mt-2 text-muted">Recent flip activity across your tenant.</p>
       </div>
+
+      <MobileAppCard />
 
       <div className="grid gap-6 md:grid-cols-3">
         <div className="rounded-2xl border border-line/60 bg-white p-6 shadow-sm">

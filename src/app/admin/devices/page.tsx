@@ -1,6 +1,7 @@
 import { prisma } from "@/lib/prisma";
 import { getSession } from "@/lib/session";
 import { brand } from "@/lib/brand";
+import { MobileAppCard } from "@/components/admin/MobileAppCard";
 import { addDevice, renameDevice, revokeDevice } from "./actions";
 
 export const dynamic = "force-dynamic";
@@ -30,6 +31,8 @@ export default async function AdminDevicesPage() {
           Up to {tenant?.deviceLimit ?? 4} active installs on your plan — revoke retired phones anytime.
         </p>
       </div>
+
+      <MobileAppCard />
 
       <section className="rounded-2xl border border-line/60 bg-white p-6 shadow-sm">
         <h2 className="text-lg font-semibold text-ink">Install URL</h2>

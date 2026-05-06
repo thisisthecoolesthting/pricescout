@@ -1,0 +1,29 @@
+{
+  "dispatch_id": "PRICESCOUT-WPBS-AND-APP-DOWNLOAD-008",
+  "branch": "feat/wpbs-and-admin-app-download",
+  "depends_on": ["PRICESCOUT-DUAL-SURFACE-COPY-002"],
+  "completed_at": "2026-05-06T04:10:00.000Z",
+  "summary": "WPBS partner bypass (POST /api/auth/wpbs-grant, magic GET /api/auth/magic-login, rate limit, Resend fallback), homepage WpbsButton strip, Prisma Tenant WPBS fields + WpbsGrant, admin MobileAppCard with QR + manifest, team WPBS org banner. Migration 20260506120000_wpbs_bypass_fields.",
+  "tests": { "command": "npm run test", "result": "pass", "note": "Re-run if vitest worker timeout flakes" },
+  "typecheck": { "command": "npm run typecheck", "result": "pass" },
+  "build": { "command": "npm run build", "result": "pass" },
+  "operator_followups": [
+    "Apply migration on Postgres: npx prisma migrate deploy (or migrate dev locally)",
+    "Set RESEND_API_KEY (+ optional RESEND_FROM) on VPS for magic-link email delivery",
+    "Dispatch 131: drop signed APK at public/downloads/pricescout-android-latest.apk and update pricescout-android-latest.json with real version + sha256 + sizeBytes",
+    "Optional NEXT_PUBLIC_ANDROID_INTERNAL_PLAY_URL for internal testing link in admin tile"
+  ],
+  "skipped_from_dispatch": [
+    "Cross-tenant superuser WPBS grant list / extend / revoke — documented on /admin/team for current org only"
+  ],
+  "commits": [
+    {
+      "sha": "6b96d9a407cfd3768b7e04e5c9d24367a1f5c6ce",
+      "message": "feat: WPBS partner grant + admin mobile app card (dispatch 008)"
+    },
+    {
+      "sha": "8d8286d6447fd20175453e43a05bbb401ee13ed8",
+      "message": "chore(dispatch): move 008 prompt to done/"
+    }
+  ]
+}

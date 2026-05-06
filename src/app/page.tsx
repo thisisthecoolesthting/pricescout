@@ -16,6 +16,7 @@ import { FAQ } from "@/components/FAQ";
 import { Reveal } from "@/components/Reveal";
 import { HOME_FAQ_ITEMS } from "@/content/faq-data";
 import { TrustStrip } from "@/components/marketing/TrustStrip";
+import { WpbsButton } from "@/components/marketing/WpbsButton";
 
 const FAQS = [...HOME_FAQ_ITEMS];
 
@@ -250,6 +251,14 @@ export default function HomePage() {
           <div className="mt-12">
             <FAQ items={FAQS} />
           </div>
+        </div>
+      </section>
+
+      {/* WPBS partner entry (low-key — not a primary purchase path) */}
+      <section className="border-t border-line/30 bg-cream/40 py-10">
+        <div className="container-pricescout flex flex-wrap items-center justify-between gap-4">
+          <p className="text-sm text-soft">Coming from a partner program?</p>
+          <WpbsButton />
         </div>
       </section>
 
