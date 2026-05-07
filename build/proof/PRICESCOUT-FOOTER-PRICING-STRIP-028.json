@@ -1,0 +1,15 @@
+{
+  "dispatch_id": "PRICESCOUT-FOOTER-PRICING-STRIP-028",
+  "branch": "feat/footer-pricing-flipper-strip",
+  "proof": "npm run typecheck; npm run test; npm run build — exit 0",
+  "skipped_pre_checks": [],
+  "changes": [
+    "Footer.tsx: replaced flip/reseller tagline with shop pricing scanner copy (Task A — was not clean)",
+    "PricingTiers.tsx: Pro Monthly bullets + Marketplace line on all paid tiers (Task B — was not clean)",
+    "brand.ts: heroSub shop-language (Task C — was not clean)",
+    "page.tsx, scan/page.tsx, watch/page.tsx, login/page.tsx, admin/scans/page.tsx, how-it-works/page.tsx, faq-data.ts: flip log / buy-skip / verdict phrasing sweep (Task D)",
+    "admin/scans: table header Verdict → Note (UI only; DB field unchanged)"
+  ],
+  "forbidden_pattern_grep": "flip log|buy.*skip|your cost|net margin|deal score|flip scanner|shared flip — 0 hits in listed Task D files after edits",
+  "dispatch_prompt": "028 prompt was untracked; moved from outbox/ to done/ with Move-Item, then git add"
+}

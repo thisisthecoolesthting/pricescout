@@ -1,0 +1,31 @@
+{
+  "dispatch_id": "PRICESCOUT-LOCAL-BUILDER-029",
+  "branch": "feat/local-builder-claude-spine-driven",
+  "proof": "npm run typecheck; npm run test; npm run build — exit 0",
+  "local_preflight": {
+    "Get-Service_factory-agent-local": "Exists; Status=Stopped (start blocked — C:\\\\factory-agent-local\\\\app.py missing on this machine)",
+    "gh_auth_status": "OK — thisisthecoolesthting, repo scope",
+    "ANTHROPIC_API_KEY": "Not verified in-repo (expected under C:\\\\factory-agent-local\\\\.env — operator-blocked if missing)"
+  },
+  "smoke_test_niche_spec": {
+    "source_example": "niche_specs/examples/spine-smoke-test.json",
+    "dropped_to": "niche_specs/incoming/spine-smoke-test.json",
+    "watcher_command": "python scripts/dispatch_watcher.py --once",
+    "result": "FAILED_AS_EXPECTED_NO_MIKAELA",
+    "mikaela_http": -1,
+    "error_summary": "WinError 10061 connection refused 127.0.0.1:7778",
+    "artifact": "niche_specs/_inbox_replies/spine-smoke-test.json.fail.txt",
+    "note": "End-to-end success requires running local Mikaela HTTP on :7778 per docs/LOCAL_BUILDER_CLAUDE_RUNBOOK.md"
+  },
+  "deliverables": [
+    "docs/builder/spine-anchored-build.md",
+    "docs/builder/MIKAELA_APP_INTEGRATION.md",
+    "docs/LOCAL_BUILDER_CLAUDE_RUNBOOK.md",
+    "scripts/dispatch_watcher.py",
+    "scripts/dispatch_watcher.env.example",
+    "scripts/sync-mikaela-spine-prompt.ps1",
+    "niche_specs/README.md + examples/spine-smoke-test.json + incoming|done|failed/.gitkeep",
+    "cursor-dispatch/in-progress/.gitkeep + failed/.gitkeep",
+    "package.json scripts dispatch-watcher"
+  ]
+}

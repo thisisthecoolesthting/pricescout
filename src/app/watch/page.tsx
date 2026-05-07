@@ -4,7 +4,7 @@ import { brand } from "@/lib/brand";
 
 export const metadata = {
   title: `Watch a 90-second tour — ${brand.name}`,
-  description: `Watch ${brand.name} in action: snap an item, get the resale price and tag price, save to a shared crew flip log. About 90 seconds.`,
+  description: `Watch ${brand.name} in action: snap an item, get the resale price and tag price, save to a shared crew tag list. About 90 seconds.`,
 };
 
 export default function WatchPage() {
@@ -52,7 +52,7 @@ export default function WatchPage() {
               </div>
             </div>
             <p className="mt-4 text-center text-xs text-soft">
-              About 90 seconds &middot; covers scan &rarr; comp &rarr; verdict &rarr; tag price &rarr; save to crew flip log.
+              About 90 seconds &middot; covers scan &rarr; comp &rarr; tag suggestion &rarr; tag price &rarr; save to crew tag list.
             </p>
           </div>
         </div>

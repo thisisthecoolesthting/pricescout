@@ -1,0 +1,12 @@
+{
+  "slug": "spine-smoke-test",
+  "name": "Spine Smoke Test",
+  "domain": null,
+  "audience": "test users",
+  "value_props": ["it builds"],
+  "brand": { "primary_color": "#11CB9D" },
+  "tiers": [{ "slug": "free", "name": "Free", "price_cents": 0 }],
+  "features": ["hero"],
+  "github_owner": "thisisthecoolesthting",
+  "vps_subdomain": null
+}

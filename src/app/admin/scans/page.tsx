@@ -38,7 +38,7 @@ export default async function AdminScansPage({
       <div>
         <h1 className="text-3xl font-bold text-ink">Scans</h1>
         <p className="mt-2 text-muted">
-          Paginated flip log ({total} rows). Showing page {page} of {pages}.
+          Paginated tag list ({total} rows). Showing page {page} of {pages}.
         </p>
       </div>
 
@@ -48,7 +48,7 @@ export default async function AdminScansPage({
             <tr className="text-soft">
               <th className="px-4 py-3 font-semibold">Title</th>
               <th className="px-4 py-3 font-semibold">Category</th>
-              <th className="px-4 py-3 font-semibold">Verdict</th>
+              <th className="px-4 py-3 font-semibold">Note</th>
               <th className="px-4 py-3 font-semibold">Median</th>
               <th className="px-4 py-3 font-semibold">Staff</th>
               <th className="px-4 py-3 font-semibold">Device</th>
