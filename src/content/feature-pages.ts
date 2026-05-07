@@ -9,6 +9,7 @@ const commonTrust = [
 export const FEATURE_SLUGS = [
   "visual-identification",
   "browser-scanner",
+  "marketplace-helper",
   "barcode-fast-path",
   "shared-flip-log",
   "device-management",
@@ -87,7 +88,7 @@ const pages: Record<FeatureSlug, SpineSixModel> = {
     capabilities: [
       "Uses getUserMedia for live preview, barcode decode, and capture in the browser",
       "Works with built-in webcams, USB document cameras, and most plug-and-play overhead cams",
-      "Pairs with the same /api/identify pipeline and flip log as Expo — one subscription, mixed surfaces",
+      "Pairs with the same /api/identify pipeline and tag list as Expo — one subscription, mixed surfaces",
       "Kiosk-style /scan sessions stay readable on a large screen for walk-up questions (full kiosk mode ships separately)",
     ],
     steps: [
@@ -117,6 +118,59 @@ const pages: Record<FeatureSlug, SpineSixModel> = {
     finalCta: {
       title: "Try the browser scanner now — no install",
       subtitle: "Open /scan on any crew laptop with a webcam and run a real identification in the public sandbox.",
+      pricingLine: "$29 Week Pass · $49/mo Pro · $699 Founders Lifetime (cap 100)",
+    },
+  },
+  "marketplace-helper": {
+    eyebrow: "FEATURE DEEP DIVE",
+    title: "Facebook Marketplace listing helper",
+    subtitle:
+      "Turn an approved tag price into a ready-to-copy Marketplace draft with title, category, pickup-friendly description, and price aligned to the shop tag.",
+    trustStrip: commonTrust,
+    heroImage: {
+      src: "/images/app-interface.jpg",
+      alt: "Marketplace listing helper drafting a local resale listing from a scan",
+      width: 480,
+      height: 360,
+    },
+    problem: {
+      title: "Problem it solves",
+      body: "Writing local listings by hand slows the floor after pricing is already done.",
+    },
+    audience: {
+      title: "Who it is for",
+      body: "Thrift stores, estate-sale crews, and yard-sale teams that move selected items from the tag table to Facebook Marketplace.",
+    },
+    capabilities: [
+      "Builds a listing draft from the scan title, category, tag price, and shop pickup notes",
+      "Keeps the Marketplace draft aligned with the price shoppers see in store",
+      "Supports Draft, Posted, and Sold status tracking for the shared crew view",
+      "Hands off copy-and-open workflow without promising automatic Facebook posting",
+    ],
+    steps: [
+      "Scan the item and approve the suggested tag price.",
+      "Open the Marketplace helper on the scan row.",
+      "Review the generated title, category, price, and description.",
+      "Copy the draft into Facebook Marketplace and update status as it moves.",
+    ],
+    faq: [
+      {
+        q: "Does PriceScout auto-post to Facebook?",
+        a: "No. The helper prepares the listing fields and opens Marketplace for copy-paste. Automatic posting depends on future commerce-partner approval.",
+      },
+    ],
+    relatedFeatures: [
+      { label: "Browser scanner", href: "/features/browser-scanner" },
+      { label: "Shared tag list", href: "/features/shared-flip-log" },
+      { label: "Tag price suggestions", href: "/features/tag-price-suggestions" },
+    ],
+    relatedIndustries: [
+      { label: "Thrift stores", href: "/industries/thrift-stores" },
+      { label: "Estate sales", href: "/industries/estate-sales" },
+    ],
+    finalCta: {
+      title: "Move from tag price to Marketplace draft",
+      subtitle: "Keep shop tags and local listing copy in sync without extra typing.",
       pricingLine: "$29 Week Pass · $49/mo Pro · $699 Founders Lifetime (cap 100)",
     },
   },
@@ -154,7 +208,7 @@ const pages: Record<FeatureSlug, SpineSixModel> = {
     ],
     relatedFeatures: [
       { label: "Visual identification", href: "/features/visual-identification" },
-      { label: "Flip log export", href: "/features/flip-log-export" },
+      { label: "tag list export", href: "/features/flip-log-export" },
     ],
     relatedIndustries: [
       { label: "Consignment shops", href: "/industries/consignment-shops" },
@@ -168,7 +222,7 @@ const pages: Record<FeatureSlug, SpineSixModel> = {
   },
   "shared-flip-log": {
     eyebrow: "FEATURE DEEP DIVE",
-    title: "Shared flip logs your crew trusts",
+    title: "Shared tag lists your crew trusts",
     subtitle:
       "Everyone sees the same decisions across installs — owners approve buys remotely while floor staff scans donations.",
     trustStrip: commonTrust,
@@ -201,7 +255,7 @@ const pages: Record<FeatureSlug, SpineSixModel> = {
     relatedFeatures: [
       { label: "Browser scanner", href: "/features/browser-scanner" },
       { label: "Device management", href: "/features/device-management" },
-      { label: "Flip log export", href: "/features/flip-log-export" },
+      { label: "tag list export", href: "/features/flip-log-export" },
     ],
     relatedIndustries: [
       { label: "Yard sales", href: "/industries/yard-sales" },
@@ -247,7 +301,7 @@ const pages: Record<FeatureSlug, SpineSixModel> = {
     ],
     relatedFeatures: [
       { label: "Browser scanner", href: "/features/browser-scanner" },
-      { label: "Shared flip log", href: "/features/shared-flip-log" },
+      { label: "Shared tag list", href: "/features/shared-flip-log" },
       { label: "Tag price suggestions", href: "/features/tag-price-suggestions" },
     ],
     relatedIndustries: [
@@ -278,7 +332,7 @@ const pages: Record<FeatureSlug, SpineSixModel> = {
       "Computes median sold listings across ninety-day windows",
       "Subtracts marketplace fees + realistic shipping friction",
       "Outputs net expectations operators still respect",
-      "Pairs verdict labels Buy / Maybe / Skip with numeric clarity",
+      "Pairs verdict labels Review / Hold / Pass with numeric clarity",
     ],
     steps: [
       "Identify item.",
@@ -293,7 +347,7 @@ const pages: Record<FeatureSlug, SpineSixModel> = {
       },
     ],
     relatedFeatures: [
-      { label: "Flip log export", href: "/features/flip-log-export" },
+      { label: "tag list export", href: "/features/flip-log-export" },
       { label: "Visual identification", href: "/features/visual-identification" },
     ],
     relatedIndustries: [
@@ -339,7 +393,7 @@ const pages: Record<FeatureSlug, SpineSixModel> = {
       },
     ],
     relatedFeatures: [
-      { label: "Shared flip log", href: "/features/shared-flip-log" },
+      { label: "Shared tag list", href: "/features/shared-flip-log" },
       { label: "Device management", href: "/features/device-management" },
     ],
     relatedIndustries: [
@@ -361,3 +415,4 @@ export function getFeaturePage(slug: string): SpineSixModel | undefined {
 export function listFeatureSlugs(): FeatureSlug[] {
   return [...FEATURE_SLUGS];
 }
+

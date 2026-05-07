@@ -294,7 +294,7 @@ export function Scanner() {
 
         <div className="mt-4 grid gap-3 sm:grid-cols-2">
           <label className="text-xs font-medium text-brand-mute">
-            Your cost (USD)
+            Item cost (USD)
             <input
               type="number"
               min="0"
@@ -387,3 +387,4 @@ function encodeManualQueryAsImage(q: string): string {
   const tag = btoa(unescape(encodeURIComponent(q))).slice(0, 24);
   return `data:image/png;base64,${PNG_PREFIX}${tag}`;
 }
+

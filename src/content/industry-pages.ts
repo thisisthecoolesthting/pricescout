@@ -51,7 +51,7 @@ const pages: Record<IndustrySlug, SpineSixModel> = {
       },
     ],
     relatedFeatures: [
-      { label: "Shared flip log", href: "/features/shared-flip-log" },
+      { label: "Shared tag list", href: "/features/shared-flip-log" },
       { label: "Device management", href: "/features/device-management" },
     ],
     relatedIndustries: [
@@ -86,7 +86,7 @@ const pages: Record<IndustrySlug, SpineSixModel> = {
     ],
     steps: [
       "Photograph dining cabinet picks.",
-      "Share verdicts via shared flip log.",
+      "Share verdicts via Shared tag list.",
       "Approve markdown tiers collaboratively.",
       "Leave homeowners calm receipts.",
     ],
@@ -235,7 +235,7 @@ const pages: Record<IndustrySlug, SpineSixModel> = {
       },
     ],
     relatedFeatures: [
-      { label: "Shared flip log", href: "/features/shared-flip-log" },
+      { label: "Shared tag list", href: "/features/shared-flip-log" },
       { label: "Tag price suggestions", href: "/features/tag-price-suggestions" },
     ],
     relatedIndustries: [
@@ -303,3 +303,4 @@ export function getIndustryPage(slug: string): SpineSixModel | undefined {
 export function listIndustrySlugs(): IndustrySlug[] {
   return [...INDUSTRY_SLUGS];
 }
+

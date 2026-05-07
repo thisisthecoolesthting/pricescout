@@ -7,7 +7,7 @@ import { listFeatureSlugs, getFeaturePage } from "@/content/feature-pages";
 
 export const metadata: Metadata = {
   title: `Features — ${brand.name}`,
-  description: `Deep dives into ${brand.name} capabilities — vision scanning, barcodes, shared flip logs, devices, comps, and exports.`,
+  description: `Deep dives into ${brand.name} capabilities — vision scanning, barcodes, shared tag lists, devices, comps, and exports.`,
 };
 
 export default function FeaturesHubPage() {
@@ -48,3 +48,4 @@ export default function FeaturesHubPage() {
     </Section>
   );
 }
+
