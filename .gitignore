@@ -10,3 +10,10 @@ out/
 *.tsbuildinfo
 next-env.d.ts
 .turbo
+
+# Local dispatch watcher secrets + operator-dropped specs (029)
+scripts/dispatch_watcher.env
+niche_specs/incoming/*.json
+niche_specs/done/*.json
+niche_specs/failed/*.json
+niche_specs/_inbox_replies/
