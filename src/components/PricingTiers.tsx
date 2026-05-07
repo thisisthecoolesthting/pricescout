@@ -26,6 +26,7 @@ const TIERS: Tier[] = [
     features: [
       "7 days of unlimited scanning",
       "Up to 4 scanner installs",
+      "Facebook Marketplace listing helper — copy & post in one tap",
       "Perfect for one-weekend estate or yard sales",
       "No auto-renew",
     ],
@@ -42,8 +43,9 @@ const TIERS: Tier[] = [
       "Unlimited scans across the crew",
       "Up to 4 scanner installs",
       "eBay sold-comp lookup",
-      "Buy / skip verdicts + net-margin math",
-      "Shared flip log",
+      "Suggested tag prices with demand signal",
+      "Shared crew tag list",
+      "Facebook Marketplace listing helper — copy & post in one tap",
       "Email support",
     ],
     ctaLabel: "Start Pro Monthly",
@@ -61,6 +63,7 @@ const TIERS: Tier[] = [
     features: [
       "Everything in Pro Monthly",
       "Up to 4 scanner installs",
+      "Facebook Marketplace listing helper — copy & post in one tap",
       "Save ~17% vs monthly",
       "10 months for the price of 12",
       "Best for stores running year-round",
@@ -78,6 +81,7 @@ const TIERS: Tier[] = [
     features: [
       "Everything in Pro, forever",
       "Up to 4 scanner installs, forever",
+      "Facebook Marketplace listing helper — copy & post in one tap",
       "First 100 customers only",
       "No subscription, no renewals",
       "Founders badge in app",

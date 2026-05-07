@@ -15,7 +15,7 @@ export default function HowItWorksPage() {
         <div className="mx-auto max-w-3xl">
           <span className="pill bg-mint-500/10 text-mint-600">HOW IT WORKS</span>
           <h1 className="gradient-text mb-8 mt-4 text-4xl font-bold tracking-tight">
-            Snap, verdict, save — on phone or laptop
+            Snap, price, save — on phone or laptop
           </h1>
           <ol className="space-y-12 text-base leading-relaxed text-muted">
             <li>
@@ -38,16 +38,16 @@ export default function HowItWorksPage() {
               </div>
             </li>
             <li>
-              <strong className="mb-2 block text-lg text-ink">2. Verdict</strong>
+              <strong className="mb-2 block text-lg text-ink">2. Tag price</strong>
               <p>
-                {brand.name} returns what it is, what it sells for online, and a buy / skip verdict — same pipeline for
+                {brand.name} returns what it is, what it sells for online, and a suggested tag price with demand signal — same pipeline for
                 Expo and for the browser scanner. Barcodes jump the queue when shrink-wrap still cooperates.
               </p>
             </li>
             <li>
               <strong className="mb-2 block text-lg text-ink">3. Save</strong>
               <p>
-                Paid tiers write scans into the shared flip log so the whole crew sees the same history — whether those
+                Paid tiers write scans into the shared tag list so the whole crew sees the same history — whether those
                 scans came from phones on the floor or a back-room laptop.
               </p>
             </li>
