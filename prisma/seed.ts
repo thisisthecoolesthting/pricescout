@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Seed PriceScout demo tenant — run after migrate against Postgres.
  * `npx prisma db seed`
  *
@@ -53,6 +53,7 @@ async function main() {
     );
   }
 
+  await prisma.invite.deleteMany({ where: { tenantId: tenant.id } });
   await prisma.scan.deleteMany({ where: { tenantId: tenant.id } });
   await prisma.device.deleteMany({ where: { tenantId: tenant.id } });
 
