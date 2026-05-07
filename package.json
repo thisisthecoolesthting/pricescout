@@ -14,7 +14,10 @@
     "analyze": "cross-env ANALYZE=true next build",
     "playwright:install": "playwright install chromium",
     "e2e": "playwright test",
-    "demo-qa": "playwright test tests/demo-walkthrough.spec.ts --reporter=list"
+    "demo-qa": "playwright test tests/demo-walkthrough.spec.ts --reporter=list",
+    "demo-qa:live": "cross-env PLAYWRIGHT_BASE_URL=https://pricescout.pro playwright test tests/demo-walkthrough.spec.ts --reporter=list",
+    "dispatch-watcher": "python scripts/dispatch_watcher.py",
+    "dispatch-watcher:once": "python scripts/dispatch_watcher.py --once"
   },
   "prisma": {
     "seed": "npx tsx prisma/seed.ts"

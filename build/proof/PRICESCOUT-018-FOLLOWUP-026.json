@@ -1,0 +1,14 @@
+{
+  "dispatch_id": "PRICESCOUT-018-FOLLOWUP-026",
+  "completed_at": "2026-05-07T01:16:00Z",
+  "branch": "feat/snap-price-post-headline-and-018-followup",
+  "worktree": "E:/Projects/pricescout026-work",
+  "summary": "Homepage Snap/Price/Post strip, demo-qa + demo-qa:live, gated WPBS beat, 018 report follow-up, strict-build fix on admin/devices Device[]",
+  "checks": {
+    "npm_run_typecheck": 0,
+    "npm_run_test": 0,
+    "npm_run_build": 0
+  },
+  "merge_note": "Remote origin/feat/homepage-hero-tighten did not exist at fetch time; hero padding uses pt-10/pb-20/sm:pt-14/lg:pt-16 (dispatch 025-equivalent).",
+  "playwright_baseURL": "process.env.PLAYWRIGHT_BASE_URL ?? http://127.0.0.1:3300 (playwright.config.ts on main)"
+}

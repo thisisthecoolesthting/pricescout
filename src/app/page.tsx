@@ -25,7 +25,7 @@ export default function HomePage() {
     <>
       {/* HERO ------------------------------------------------------------ */}
       <section
-        className="hero-bg hero-grain relative overflow-hidden pt-28 pb-24 sm:pt-32 lg:pt-36"
+        className="hero-bg hero-grain relative overflow-hidden pt-10 pb-20 sm:pt-14 lg:pt-16"
         id="hero"
       >
         <div className="container-pricescout relative">
@@ -85,6 +85,21 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+      <section className="border-y border-line/30 bg-cream/40 py-10">
+        <div className="container-pricescout">
+          <div className="mx-auto max-w-4xl text-center">
+            <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl">
+              <span className="text-ink">Snap.</span>{" "}
+              <span className="text-blue-700">Price.</span>{" "}
+              <span className="text-mint-600">Post.</span>
+            </h2>
+            <p className="mt-3 text-base text-muted sm:text-lg">
+              One tap to a defensible tag price. One more to your Marketplace listing.
+            </p>
+          </div>
+        </div>
+      </section>
+
 
       {/* WHAT IS PRICESCOUT? --------------------------------------------- */}
       <section id="what-is" className="section bg-white">
@@ -107,7 +122,7 @@ export default function HomePage() {
               <AudienceCard
                 icon={<Store className="h-8 w-8" />}
                 title="Thrift store owners"
-                body="Sort and price donations in batches. Whole back room scans together — 4 staff, 4 phones, one shared flip log."
+                body="Sort and price donations in batches. Whole back room scans together — 4 staff, 4 phones, one shared crew tag list."
               />
             </Reveal>
             <Reveal delay={80}>
@@ -127,7 +142,7 @@ export default function HomePage() {
             <Reveal delay={240}>
               <AudienceCard
                 icon={<Briefcase className="h-8 w-8" />}
-                title="Flea market &amp; resellers"
+                title="Flea market &amp; multi-booth crews"
                 body="Source faster, list smarter. Real sold-comps mean the tag price you set is the price your stuff actually moves at."
               />
             </Reveal>
@@ -167,14 +182,14 @@ export default function HomePage() {
                 <Step
                   n={2}
                   title="Snap the item"
-                  body="Point at any donation, sale-table find, or estate lot. The vision model picks out brand, model, era, material — even when there&rsquo;s no barcode. Multiple staff can scan at once; everyone&rsquo;s scans land in the same shared flip log."
+                  body="Point at any donation, sale-table find, or estate lot. The vision model picks out brand, model, era, material — even when there&rsquo;s no barcode. Multiple staff can scan at once; everyone&rsquo;s scans land in the same shared crew tag list."
                 />
               </Reveal>
               <Reveal delay={240}>
                 <Step
                   n={3}
                   title="Price the tag"
-                  body="The app shows you the eBay sold-listing median, your estimated net after fees and shipping, and a suggested tag price. Crew agrees, sticker goes on, item hits the floor."
+                  body="The app shows you the eBay sold-listing median, typical take-home after marketplace fees and shipping, and a suggested tag price. Crew agrees, sticker goes on, item hits the floor."
                 />
               </Reveal>
             </div>
@@ -202,7 +217,7 @@ export default function HomePage() {
             <Reveal delay={0}>
               <AudienceCard
                 icon={<Zap className="h-8 w-8" />}
-                title="Sub-second verdicts"
+                title="Sub-second pricing"
                 body="Cached comps and on-device barcode reads mean most scans return faster than you can hand the item to the next sorter."
               />
             </Reveal>
@@ -210,7 +225,7 @@ export default function HomePage() {
               <AudienceCard
                 icon={<Users className="h-8 w-8" />}
                 title="Whole crew, one view"
-                body="4 phones share one flip log. New volunteer? They scan the same items the senior pricer would, and the verdict is the verdict."
+                body="4 phones share one tag list. New volunteer? They scan the same items the senior pricer would, and everyone sees the same suggested tag range."
               />
             </Reveal>
             <Reveal delay={200}>
@@ -283,7 +298,7 @@ export default function HomePage() {
                 </Link>
               </div>
               <p className="text-sm text-slate-400">
-                Phone in your pocket &middot; Webcam on the back-room laptop &middot; Tablet at checkout — same scanner, same verdicts
+                Phone in your pocket &middot; Webcam on the back-room laptop &middot; Tablet at checkout — same scanner, same tag suggestions
               </p>
             </div>
             <div className="flex justify-center lg:justify-end">

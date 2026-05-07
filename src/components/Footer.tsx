@@ -14,7 +14,7 @@ export function Footer() {
               </span>
             </div>
             <p className="mt-4 max-w-md text-sm text-slate-400">
-              Discover the hidden value of secondhand treasures. Visual flip scanner for resellers — point, snap, sell.
+              Pricing scanner for thrift stores, estate sales, and yard sales. Snap, price, post — defensible tag prices in seconds.
             </p>
           </div>
           <div className="grid grid-cols-2 gap-8 lg:grid-cols-4">

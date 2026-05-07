@@ -37,7 +37,7 @@ type BeatResult = {
   name: string;
   path: string;
   viewport: ViewportName;
-  status: "PASS" | "FAIL";
+  status: "PASS" | "FAIL" | "SKIP";
   durationMs: number;
   screenshot: string;
   errors: string[];
@@ -258,11 +258,30 @@ const beats: Beat[] = [
     },
   },
 ];
-
 async function runBeat(page: Page, beat: Beat, viewport: ViewportName): Promise<BeatResult> {
   const start = Date.now();
   const errors: string[] = [];
   const screenshot = path.join(SCREENSHOT_DIR, `${String(beat.id).padStart(2, "0")}-${slugify(beat.name)}-${viewport}.png`);
+
+  if (beat.id === 12 && process.env.QA_ALLOW_WRITES !== "1") {
+    try {
+      await page.goto(beat.path, { waitUntil: "networkidle" });
+      await page.screenshot({ path: screenshot, fullPage: true });
+    } catch (error) {
+      errors.push(error instanceof Error ? error.message : String(error));
+    }
+    return {
+      beat: beat.id,
+      name: beat.name,
+      path: beat.path,
+      viewport,
+      status: errors.length === 0 ? "SKIP" : "FAIL",
+      durationMs: Date.now() - start,
+      screenshot,
+      errors: [],
+      forbiddenHits: [],
+    };
+  }
 
   try {
     await beat.run(page);
@@ -330,37 +349,54 @@ async function collectForbiddenHits(page: Page, beat: Beat, viewport: ViewportNa
   return hits;
 }
 
+function beatAggregateStatus(rows: BeatResult[]) {
+  if (rows.every((r) => r.status === "PASS")) return "PASS";
+  if (rows.every((r) => r.status === "SKIP")) return "SKIP";
+  return "FAIL";
+}
 async function writeArtifacts(results: BeatResult[], baseURL: string, infrastructureErrors: string[]) {
   const beatIds = [...new Set(results.map((r) => r.beat))];
-  const passedBeats = beatIds.filter((beat) => results.filter((r) => r.beat === beat).every((r) => r.status === "PASS"));
+  const passedBeats = beatIds.filter((beat) =>
+    results.filter((r) => r.beat === beat).every((r) => r.status === "PASS"),
+  );
+  const skippedViewportRuns = results.filter((r) => r.status === "SKIP").length;
   const allHits = results.flatMap((r) => r.forbiddenHits);
-  const readiness = passedBeats.length === beatIds.length && allHits.length === 0
-    ? "green"
-    : passedBeats.length >= 9 && allHits.length === 0
-      ? "yellow"
-      : "red";
+  const readiness =
+    passedBeats.length === beatIds.length && allHits.length === 0
+      ? "green"
+      : passedBeats.length >= 9 && allHits.length === 0
+        ? "yellow"
+        : "red";
 
   const report = [
     `# ${DISPATCH_ID} Demo Walkthrough QA`,
     "",
-    `**Summary:** ${passedBeats.length} of ${beatIds.length} beats passed (${results.filter((r) => r.status === "PASS").length}/${results.length} viewport runs passed).`,
+    `**Summary:** ${passedBeats.length} of ${beatIds.length} beats passed (${results.filter((r) => r.status === "PASS").length}/${results.length} viewport runs passed; ${skippedViewportRuns} viewport runs skipped).`,
     `**Base URL:** ${baseURL}`,
     `**Generated:** ${new Date().toISOString()}`,
-    infrastructureErrors.length ? `**Infrastructure:** FAIL - ${infrastructureErrors.join("; ")}` : "**Infrastructure:** PASS",
+    infrastructureErrors.length
+      ? `**Infrastructure:** FAIL - ${infrastructureErrors.join("; ")}`
+      : "**Infrastructure:** PASS",
     "",
     "## Per-Beat Results",
     "",
     ...beatIds.flatMap((beat) => {
       const rows = results.filter((r) => r.beat === beat);
       const first = rows[0];
+      const aggregate = beatAggregateStatus(rows);
       return [
-        `### ${String(beat).padStart(2, "0")} - ${first.name}: ${rows.every((r) => r.status === "PASS") ? "PASS" : "FAIL"}`,
+        `### ${String(beat).padStart(2, "0")} - ${first.name}: ${aggregate}`,
         "",
-        ...rows.map((r) => [
-          `- ${r.viewport}: ${r.status} in ${r.durationMs}ms`,
-          `  - screenshot: [${path.basename(r.screenshot)}](../../${r.screenshot.replace(/\\/g, "/")})`,
-          ...(r.errors.length ? r.errors.map((e) => `  - issue: ${oneLine(e)}`) : []),
-        ].join("\n")),
+        ...rows.map((r) =>
+          [
+            `- ${r.viewport}: ${r.status} in ${r.durationMs}ms`,
+            ...(r.status === "SKIP"
+              ? ["  - note: skipped WPBS destructive beat (read-only; set QA_ALLOW_WRITES=1 to run)"]
+              : []),
+            `  - screenshot: [${path.basename(r.screenshot)}](../../${r.screenshot.replace(/\\/g, "/")})`,
+            ...(r.errors.length ? r.errors.map((e) => `  - issue: ${oneLine(e)}`) : []),
+          ].join("\n"),
+        ),
         "",
       ];
     }),
@@ -378,6 +414,14 @@ async function writeArtifacts(results: BeatResult[], baseURL: string, infrastruc
         ? "YELLOW - core flow mostly works, but review failed beats before the live demo."
         : "RED - one or more core demo beats or language guards failed; do not treat this as demo-ready without operator review.",
     "",
+    "## 2026-05-06 follow-up after dispatch 026",
+    "",
+    "Dispatch **PRICESCOUT-018-FOLLOWUP-026** adds a visible homepage H2 for **Snap. Price. Post.** (plain text for Playwright and assistive tech), wires `PLAYWRIGHT_BASE_URL` for `demo-qa:live`, and gates beat 12 (WPBS) behind `QA_ALLOW_WRITES=1` so read-only runs do not hit `/api/auth/wpbs-grant` on production.",
+    "",
+    "Expected regression shape after this lands: beat 1 (home hero) should go green once the new headline is deployed; beats 3â€“4 and related pricing/Marketplace copy stay red until dispatch 007 ships. Admin beats 8â€“11 stay red until dispatch 017 demo seed and env are available. Beat 12 shows as **SKIP** in reports unless `QA_ALLOW_WRITES=1`.",
+    "",
+    "Re-run `npm run demo-qa` locally (with `DATABASE_URL` + `PS_SESSION_SECRET`) or `npm run demo-qa:live` against production after 007, 015, and 017 land to refresh pass counts.",
+    "",
   ].join("\n");
 
   const proof = {
@@ -385,9 +429,9 @@ async function writeArtifacts(results: BeatResult[], baseURL: string, infrastruc
     branch: "feat/codex-demo-walkthrough-qa",
     depends_on: ["PRICESCOUT-DEMO-SEED-017"],
     completed_at: new Date().toISOString(),
-    summary: `${passedBeats.length} of ${beatIds.length} demo beats passed; ${allHits.length} forbidden-language hits.`,
+    summary: `${passedBeats.length} of ${beatIds.length} demo beats passed; ${allHits.length} forbidden-language hits; ${skippedViewportRuns} skipped viewport runs (WPBS read-only gate).`,
     base_url: baseURL,
-    command: "npm run demo-qa",
+    command: baseURL.includes("127.0.0.1") ? "npm run demo-qa" : "npm run demo-qa:live",
     infrastructure: {
       result: infrastructureErrors.length ? "fail" : "pass",
       errors: infrastructureErrors,
@@ -397,6 +441,7 @@ async function writeArtifacts(results: BeatResult[], baseURL: string, infrastruc
     readiness,
     beats_total: beatIds.length,
     beats_passed: passedBeats.length,
+    viewport_runs_skipped: skippedViewportRuns,
     viewport_runs_total: results.length,
     viewport_runs_passed: results.filter((r) => r.status === "PASS").length,
     forbidden_language_hits: allHits,
@@ -428,3 +473,4 @@ function collectInfrastructureErrors() {
   }
   return errors;
 }
+
