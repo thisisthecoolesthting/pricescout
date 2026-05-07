@@ -13,7 +13,8 @@
     "test:watch": "vitest",
     "analyze": "cross-env ANALYZE=true next build",
     "playwright:install": "playwright install chromium",
-    "e2e": "playwright test"
+    "e2e": "playwright test",
+    "demo-qa": "playwright test tests/demo-walkthrough.spec.ts --reporter=list"
   },
   "prisma": {
     "seed": "npx tsx prisma/seed.ts"
