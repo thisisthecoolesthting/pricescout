@@ -18,15 +18,20 @@ model Tenant {
   wpbsGrantedAt      DateTime?
   wpbsExpiresAt      DateTime?
   wpbsSourceIp       String?
+  storeAddress       String?
+  defaultCurrency    String   @default("USD")
+  tagPriceRounding   String   @default("nearest_1")
+  defaultScannerRole String   @default("scanner")
+  currentPeriodEnd   DateTime?
   createdAt          DateTime @default(now())
   updatedAt          DateTime @updatedAt
   users              User[]
   devices            Device[]
   scans              Scan[]
   wpbsGrants         WpbsGrant[]
+  invites            Invite[]
 }
 
-// Audit rows for WPBS bypass (rate limit + ops visibility). Winter Park Benefit Shop partner flow — see dispatch 008.
 model WpbsGrant {
   id        String   @id @default(cuid())
   email     String
@@ -48,8 +53,25 @@ model User {
   tenant       Tenant    @relation(fields: [tenantId], references: [id], onDelete: Cascade)
   sessions     Session[]
   scans        Scan[]
+  invitesSent  Invite[]  @relation("InviteSentBy")
   createdAt    DateTime  @default(now())
   updatedAt    DateTime  @updatedAt
+}
+
+model Invite {
+  id             String    @id @default(cuid())
+  tenantId       String
+  tenant         Tenant    @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  email          String
+  role           String
+  token          String    @unique
+  expiresAt      DateTime
+  sentByUserId   String
+  sentBy         User      @relation("InviteSentBy", fields: [sentByUserId], references: [id], onDelete: Cascade)
+  redeemedAt     DateTime?
+  createdAt      DateTime  @default(now())
+
+  @@index([tenantId, email])
 }
 
 model Session {

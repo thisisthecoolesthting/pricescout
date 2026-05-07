@@ -1,5 +1,7 @@
 import { prisma } from "@/lib/prisma";
 import { getSession } from "@/lib/session";
+import { isTenantOwnerRole } from "@/lib/roles";
+import { TeamInviteShell } from "@/components/admin/TeamInviteShell";
 
 export const dynamic = "force-dynamic";
 
@@ -7,39 +9,43 @@ export default async function AdminTeamPage() {
   const session = await getSession();
   if (!session) return null;
 
-  const [users, tenant] = await Promise.all([
+  const owner = isTenantOwnerRole(session.role);
+
+  const [users, tenant, pendingInvites] = await Promise.all([
     prisma.user.findMany({
       where: { tenantId: session.tenantId },
       orderBy: { createdAt: "asc" },
     }),
     prisma.tenant.findUnique({ where: { id: session.tenantId } }),
+    owner
+      ? prisma.invite.findMany({
+          where: { tenantId: session.tenantId, redeemedAt: null },
+          orderBy: { createdAt: "desc" },
+          take: 50,
+        })
+      : Promise.resolve([]),
   ]);
+
+  const tenantIsWpbs = tenant?.subscriptionStatus === "WPBS";
+
+  const inviteRows = pendingInvites.map((i) => ({
+    id: i.id,
+    email: i.email,
+    role: i.role,
+    expiresAt: i.expiresAt.toISOString(),
+    createdAt: i.createdAt.toISOString(),
+  }));
 
   return (
     <div className="space-y-8">
-      {tenant?.subscriptionStatus === "WPBS" ? (
-        <section className="rounded-2xl border border-mint-500/30 bg-mint-50/50 p-6 shadow-sm">
-          <h2 className="text-lg font-semibold text-ink">Winter Park Benefit Shop (WPBS) access</h2>
-          <p className="mt-2 text-sm text-muted">
-            Partner bypass active for this organization. Granted{" "}
-            {tenant.wpbsGrantedAt ? tenant.wpbsGrantedAt.toLocaleString() : "—"} · Expires{" "}
-            {tenant.wpbsExpiresAt ? tenant.wpbsExpiresAt.toLocaleString() : "—"}
-          </p>
-          <p className="mt-2 text-xs text-soft">
-            Cross-tenant grant management (extend / revoke) needs a superuser shell — not wired in this admin yet.
-          </p>
-        </section>
-      ) : null}
       <div>
-        <h1 className="text-3xl font-bold text-ink">Team</h1>
+        <h1 className="font-display text-3xl font-bold text-ink">Team</h1>
         <p className="mt-2 text-muted">
-          Staff accounts tied to your tenant. Invite tooling ships after transactional email is wired — email{" "}
-          <a href="mailto:hello@pricescout.pro" className="text-mint-700 underline">
-            hello@pricescout.pro
-          </a>{" "}
-          for bulk onboarding meanwhile.
+          Staff accounts scoped to this workspace. Owners can invite admins and scanners with a single-use link.
         </p>
       </div>
+
+      <TeamInviteShell isOwner={owner} initialInvites={inviteRows} tenantIsWpbs={!!tenantIsWpbs} />
 
       <div className="overflow-x-auto rounded-2xl border border-line/60 bg-white shadow-sm">
         <table className="min-w-full text-left text-sm">

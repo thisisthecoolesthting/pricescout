@@ -1,0 +1,12 @@
+{
+  "dispatch": "PRICESCOUT-ADMIN-STUBS-FILL-015",
+  "branch": "feat/admin-stub-pages-fill",
+  "migration": "20260508100000_team_invite_tenant_settings",
+  "dispatch_prompt_git_mv": "cursor-dispatch/outbox/015-pricescout-admin-stub-pages-fill.prompt.md not present in working tree - skipped git mv",
+  "checks": {
+    "npm_run_typecheck": { "exit_code": 0 },
+    "npm_run_test": { "exit_code": 0, "tests_passed": 4 },
+    "npm_run_build": { "exit_code": 0 }
+  },
+  "pull_request_url": "https://github.com/thisisthecoolesthting/pricescout/pull/6"
+}
