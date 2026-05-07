@@ -1,0 +1,36 @@
+{
+  "dispatch_id": "PRICESCOUT-CODEX-DEMO-QA-018",
+  "branch": "feat/codex-demo-walkthrough-qa",
+  "depends_on": [
+    "PRICESCOUT-DEMO-SEED-017"
+  ],
+  "completed_at": "2026-05-06T23:14:06.494Z",
+  "summary": "4 of 12 demo beats passed; 0 forbidden-language hits.",
+  "base_url": "http://127.0.0.1:3300",
+  "command": "npm run demo-qa",
+  "infrastructure": {
+    "result": "fail",
+    "errors": [
+      "DATABASE_URL is not set for local Prisma-backed login/admin/WPBS demo beats",
+      "PS_SESSION_SECRET is not set for local auth/session demo beats"
+    ]
+  },
+  "screenshots_dir": "tests/__screenshots__/demo-walkthrough",
+  "report": "build/proof/PRICESCOUT-CODEX-DEMO-QA-018-report.md",
+  "readiness": "red",
+  "beats_total": 12,
+  "beats_passed": 4,
+  "viewport_runs_total": 24,
+  "viewport_runs_passed": 8,
+  "forbidden_language_hits": [],
+  "top_findings": [
+    "Home hero lacks canonical Snap. Price. Post. copy.",
+    "/pricing lacks required Marketplace listing helper bullet.",
+    "/features/marketplace-helper returns 404."
+  ],
+  "expected_gates": [
+    "Dispatch 007 should satisfy FB Marketplace beats.",
+    "Dispatch 017 should satisfy demo seed/admin beats.",
+    "Dispatch 026 should add live/VPS demo QA config."
+  ]
+}
