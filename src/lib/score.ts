@@ -25,7 +25,7 @@ export interface ScoreResult {
   verdict: Verdict;
   /** Net dollars after fees and shipping vs cost basis. Null if comp unknown. */
   netUsd: number | null;
-  /** Net margin as fraction of comp. */
+  /** net return as fraction of comp. */
   netMargin: number | null;
   /** 0..100 buy score. Null if comp unknown. */
   score: number | null;
@@ -56,7 +56,7 @@ export function scoreFlip(input: ScoreInput): ScoreResult {
   const netUsd = grossAfterFees - ship - input.costBasis;
   const netMargin = netUsd / input.compMedian;
 
-  // Score: combine net margin with absolute dollars and sample-size confidence.
+  // Score: combine net return with absolute dollars and sample-size confidence.
   const marginScore = clamp(netMargin / 0.6, 0, 1) * 60;          // 60% weight to margin
   const dollarsScore = clamp(netUsd / 30, 0, 1) * 25;             // 25% weight to absolute $
   const evidenceScore = clamp(input.compSampleSize / 25, 0, 1) * 15; // 15% to evidence
@@ -74,7 +74,7 @@ export function scoreFlip(input: ScoreInput): ScoreResult {
 }
 
 function explain(p: { netUsd: number; netMargin: number; sample: number; conf: number; verdict: Verdict }): string {
-  const margin = `${Math.round(p.netMargin * 100)}% net margin`;
+  const margin = `${Math.round(p.netMargin * 100)}% net return`;
   const evidence = `${p.sample} sold comp${p.sample === 1 ? "" : "s"}`;
   const conf = `${Math.round(p.conf * 100)}% ID confidence`;
   const dollars = `$${p.netUsd.toFixed(2)} net`;
@@ -93,3 +93,4 @@ function explain(p: { netUsd: number; netMargin: number; sample: number; conf: n
 function clamp(v: number, lo: number, hi: number): number {
   return Math.max(lo, Math.min(hi, v));
 }
+

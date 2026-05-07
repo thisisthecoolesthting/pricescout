@@ -60,7 +60,7 @@ export function PriceVerdict({ payload }: { payload: VerdictPayload | null }) {
           <Stat label="Comp median" value={fmt(payload.comp.median, "$")} />
           <Stat label="Sample" value={`${payload.comp.sampleSize}`} />
           <Stat
-            label="Your cost"
+            label="Item cost"
             value={`$${payload.costBasis.toFixed(2)}`}
           />
           <Stat
@@ -104,3 +104,4 @@ function timeAgo(iso: string): string {
   const hr = Math.round(min / 60);
   return `${hr}h ago`;
 }
+

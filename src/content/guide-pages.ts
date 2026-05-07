@@ -21,7 +21,7 @@ const guides: Record<(typeof GUIDE_SLUGS)[number], GuideDoc> = {
       "Start with fiber content when tags survive — wool, cashmere, and technical outerwear behave differently than cotton basics.",
       "Shoot the care label plus the front graphic in one scan pass so identification can read both brand marks and distress.",
       "Ignore active listing fantasies — anchor on ninety-day sold medians that match the condition actually on your rack.",
-      "When comps are thin, downgrade the verbal price and mark the flip log Maybe so the next shift knows the story.",
+      "When comps are thin, downgrade the verbal price and mark the tag list Maybe so the next shift knows the story.",
       "Batch similar sizes on the same half of a rack — shoppers compare hangers side by side faster when pricing feels consistent block to block.",
     ],
   },
@@ -34,7 +34,7 @@ const guides: Record<(typeof GUIDE_SLUGS)[number], GuideDoc> = {
       "Photograph maker marks and joinery close-ups before movers stack pieces — blurred photos waste comp quality later.",
       "Price for the first serious Saturday crowd, then schedule markdown cadence before Sunday lunch so heirs see intent, not desperation.",
       "Compare local pickup reality — oversized shipping skews comps — use medians from sold listings within a few hours drive whenever possible.",
-      "Log verdicts on shared flip logs so heirs and planners read the same numbers when sibling opinions diverge politely.",
+      "Log verdicts on shared tag lists so heirs and planners read the same numbers when sibling opinions diverge politely.",
       "When data is fuzzy, stage a quiet maybe corner with signage that sets expectations honestly — credibility beats fake precision.",
     ],
   },
@@ -60,3 +60,4 @@ export function getGuide(slug: string): GuideDoc | undefined {
 export function listGuideSlugs(): (typeof GUIDE_SLUGS)[number][] {
   return [...GUIDE_SLUGS];
 }
+

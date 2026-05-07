@@ -23,7 +23,7 @@ const pages: Record<CompareSlug, SpineSixModel> = {
     capabilities: [
       "Sold-history mindset baked into every verdict",
       "Vision identifies mystery SKUs without typing guesses",
-      "Shared flip log replaces screenshots in chat threads",
+      "Shared tag list replaces screenshots in chat threads",
       "Barcode fast path when shrink-wrap survives",
     ],
     steps: [
@@ -86,7 +86,7 @@ const pages: Record<CompareSlug, SpineSixModel> = {
     ],
     relatedFeatures: [
       { label: "Barcode fast path", href: "/features/barcode-fast-path" },
-      { label: "Shared flip log", href: "/features/shared-flip-log" },
+      { label: "Shared tag list", href: "/features/shared-flip-log" },
     ],
     relatedIndustries: [
       { label: "Flea markets", href: "/industries/flea-markets" },
@@ -114,7 +114,7 @@ const pages: Record<CompareSlug, SpineSixModel> = {
     },
     capabilities: [
       "Four-install coverage on Pro",
-      "Shared flip log replaces side-text threads",
+      "Shared tag list replaces side-text threads",
       "Device management for real hardware swaps",
       "CSV export that treasurers recognize",
     ],
@@ -153,3 +153,4 @@ export function getComparePage(slug: string): SpineSixModel | undefined {
 export function listCompareSlugs(): CompareSlug[] {
   return [...COMPARE_SLUGS];
 }
+

@@ -28,7 +28,7 @@ const posts: Record<(typeof BLOG_SLUGS)[number], BlogPost> = {
   },
   "shared-flip-logs-for-volunteer-crews": {
     slug: "shared-flip-logs-for-volunteer-crews",
-    title: "Shared flip logs keep volunteer crews aligned",
+    title: "Shared tag lists keep volunteer crews aligned",
     date: "2026-04-20",
     excerpt:
       "Rotating shifts stop rewriting tribal lore when verdict history lives in one ledger.",
@@ -48,7 +48,7 @@ const posts: Record<(typeof BLOG_SLUGS)[number], BlogPost> = {
     paragraphs: [
       "Buy the Week Pass before doors open Friday so Thursday night staging includes comp checks without monthly math.",
       "Stage photos of top rooms first — heirs stress most about furniture and artwork — calm numbers build trust immediately.",
-      "Use markdown Sunday at lunch — log it in the flip log so heirs read intent, not panic.",
+      "Use markdown Sunday at lunch — log it in the tag list so heirs read intent, not panic.",
       "After the estate, let the pass expire intentionally — no surprise renewals chasing anyone Monday morning.",
     ],
   },
@@ -61,3 +61,4 @@ export function getBlogPost(slug: string): BlogPost | undefined {
 export function listBlogSlugs(): (typeof BLOG_SLUGS)[number][] {
   return [...BLOG_SLUGS];
 }
+
