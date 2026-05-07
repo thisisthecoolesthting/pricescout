@@ -3,7 +3,7 @@ import { brand } from "@/lib/brand";
 export const HOME_FAQ_ITEMS = [
   {
     q: "Who is PriceScout for?",
-    a: `${brand.name} is built for the people pricing the table: thrift store owners and their staff, estate sale runners, yard sale weekend warriors, and small flea market dealers. If you have ever stared at a stack of donations wondering what to charge, this is for you. Individual eBay or Mercari resellers also use it — they just do not always need four device installs.`,
+    a: `${brand.name} is built for the people pricing the table: thrift store owners and their staff, estate sale runners, yard sale weekend warriors, and small flea market dealers. If you have ever stared at a stack of donations wondering what to charge, this is for you. Individual online sellers listing one-offs also use it — they just do not always need four device installs.`,
   },
   {
     q: "How many phones can scan at once?",
@@ -15,7 +15,7 @@ export const HOME_FAQ_ITEMS = [
   },
   {
     q: "How does it know what an item is worth?",
-    a: "Snap a photo. The vision model identifies brand, model, era, and material. The price engine pulls real eBay sold listings (not active wishful prices) and computes the median, then subtracts marketplace fees and shipping to give you a buy or skip verdict and a suggested resale price for your tag.",
+    a: "Snap a photo. The vision model identifies brand, model, era, and material. The price engine pulls real eBay sold listings (not active wishful prices) and computes the median, then subtracts marketplace fees and shipping to give you a suggested tag price and expected price-range context for your sticker.",
   },
   {
     q: "Do I need to install anything?",
@@ -23,6 +23,6 @@ export const HOME_FAQ_ITEMS = [
   },
   {
     q: "What happens if PriceScout cannot ID an item?",
-    a: "Low-confidence scans show their work — you see uncertainty and comp sample size. When confidence is too low for a verdict, you get Maybe with guidance to try a new angle, scan a barcode if visible, or fall back to manual search. No fake precision.",
+    a: "Low-confidence scans show their work — you see uncertainty and comp sample size. When confidence is too low for a firm tag suggestion, you get Maybe with guidance to try a new angle, scan a barcode if visible, or fall back to manual search. No fake precision.",
   },
 ] as const;

@@ -10,7 +10,7 @@ export const brand = {
   // Short hero headline, ~60ch.
   hero: "Run a thrift store? Price every item in seconds.",
   heroSub:
-    "PriceScout puts a camera in your crew's pocket. Snap any donation, garage-sale find, or estate-sale lot and get the resale price, the buy/skip verdict, the net margin in seconds. Up to 4 phones per subscription so the whole back room scans at once.",
+    "Snap any donation, garage-sale find, or estate-sale lot — get a defensible tag price in seconds, then post the listing to Facebook Marketplace. Up to 4 scanner installs (phones + browsers) on every paid tier.",
   // Used in nav & footer.
   shortPitch: "Pricing scanner for thrift stores, estate sales, and yard sales.",
 };
