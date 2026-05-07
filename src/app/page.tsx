@@ -25,7 +25,7 @@ export default function HomePage() {
     <>
       {/* HERO ------------------------------------------------------------ */}
       <section
-        className="hero-bg hero-grain relative overflow-hidden pt-28 pb-24 sm:pt-32 lg:pt-36"
+        className="hero-bg hero-grain relative overflow-hidden pt-10 pb-20 sm:pt-14 lg:pt-16"
         id="hero"
       >
         <div className="container-pricescout relative">
@@ -85,6 +85,21 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+      <section className="border-y border-line/30 bg-cream/40 py-10">
+        <div className="container-pricescout">
+          <div className="mx-auto max-w-4xl text-center">
+            <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl">
+              <span className="text-ink">Snap.</span>{" "}
+              <span className="text-blue-700">Price.</span>{" "}
+              <span className="text-mint-600">Post.</span>
+            </h2>
+            <p className="mt-3 text-base text-muted sm:text-lg">
+              One tap to a defensible tag price. One more to your Marketplace listing.
+            </p>
+          </div>
+        </div>
+      </section>
+
 
       {/* WHAT IS PRICESCOUT? --------------------------------------------- */}
       <section id="what-is" className="section bg-white">
