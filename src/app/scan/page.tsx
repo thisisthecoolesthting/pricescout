@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Scanner } from "@/components/Scanner";
 import { brand } from "@/lib/brand";
+import EbayTrustStrip from "@/components/EbayTrustStrip";
 
 export const metadata = {
   title: `Scan — ${brand.name}`,
@@ -11,6 +12,8 @@ export const metadata = {
 export default function ScanPage() {
   return (
     <section className="mx-auto max-w-6xl px-4 py-8">
+      <EbayTrustStrip variant="compact" />
+
       <header className="mb-6">
         <h1 className="font-display text-2xl font-semibold tracking-tight text-brand-ink sm:text-3xl">
           Scanner
