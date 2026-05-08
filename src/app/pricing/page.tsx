@@ -1,6 +1,7 @@
 import { PricingTiers } from "@/components/PricingTiers";
 import { FAQ } from "@/components/FAQ";
 import { brand } from "@/lib/brand";
+import EbayTrustStrip from "@/components/EbayTrustStrip";
 
 const PRICING_DEVICE_FAQ = [
   {
@@ -21,6 +22,8 @@ export const metadata = {
 export default function PricingPage() {
   return (
     <section className="section-cream py-20">
+      <EbayTrustStrip />
+
       <div className="container-pricescout">
         <div className="section-header-center">
           <h1 className="section-title">Pricing that fits the size of your operation</h1>
