@@ -17,6 +17,7 @@ import { Reveal } from "@/components/Reveal";
 import { HOME_FAQ_ITEMS } from "@/content/faq-data";
 import { TrustStrip } from "@/components/marketing/TrustStrip";
 import { WpbsButton } from "@/components/marketing/WpbsButton";
+import EbayTrustStrip from "@/components/EbayTrustStrip";
 
 const FAQS = [...HOME_FAQ_ITEMS];
 
@@ -35,6 +36,8 @@ export default function HomePage() {
               <h1 className="gradient-text mb-6 mt-4 text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
                 Stop guessing what donations are worth.
               </h1>
+          <EbayTrustStrip variant="compact" />
+
               <p className="mb-8 max-w-xl text-lg text-muted sm:text-xl">
                 {brand.name} runs on the phones already in your crew&apos;s pockets — or on the back-room laptop with a webcam pointed at the triage table. Either camera, same answer in seconds: what is it, what does it sell for, what should the tag say? Up to 4 scanner installs on every paid tier — phones and browsers both count.
               </p>
