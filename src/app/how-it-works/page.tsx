@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { brand } from "@/lib/brand";
 import { Section } from "@/components/marketing/Section";
+import EbayTrustStrip from "@/components/EbayTrustStrip";
 
 export const metadata: Metadata = {
   title: `How it works — ${brand.name}`,
@@ -12,6 +13,8 @@ export default function HowItWorksPage() {
   return (
     <article className="hero-bg hero-grain pt-24 pb-20">
       <Section className="!py-0">
+      <EbayTrustStrip />
+
         <div className="mx-auto max-w-3xl">
           <span className="pill bg-mint-500/10 text-mint-600">HOW IT WORKS</span>
           <h1 className="gradient-text mb-8 mt-4 text-4xl font-bold tracking-tight">
