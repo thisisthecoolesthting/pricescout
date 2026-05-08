@@ -12,6 +12,12 @@ export interface SpineSixModel {
   title: string;
   subtitle: string;
   trustStrip: string[];
+  heroImage?: {
+    src: string;
+    alt: string;
+    width: number;
+    height: number;
+  };
   problem: { title: string; body: string };
   audience: { title: string; body: string };
   capabilities: string[];
@@ -42,6 +48,18 @@ export function SpineSixSections({ model }: { model: SpineSixModel }) {
               Watch demo
             </Link>
           </div>
+          {model.heroImage && (
+            <div className="mt-12 max-w-2xl">
+              <img
+                src={model.heroImage.src}
+                alt={model.heroImage.alt}
+                width={model.heroImage.width}
+                height={model.heroImage.height}
+                className="w-full rounded-2xl border border-line shadow-lg"
+                loading="eager"
+              />
+            </div>
+          )}
         </div>
       </section>
 
