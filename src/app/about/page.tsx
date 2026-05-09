@@ -35,6 +35,18 @@ export default function AboutPage() {
           <Link href="/trial" className="mt-10 inline-block btn-primary">
             Join the rollout
           </Link>
+
+          <section className="mt-12 border-t border-line/30 pt-8">
+            <h2 className="font-display text-lg font-semibold text-ink">Partner organizations</h2>
+            <p className="mt-2 text-sm text-muted">
+              {brand.name} partners with thrift-store nonprofits to give their teams free Pro-tier access.
+            </p>
+            <p className="mt-2 text-sm">
+              <Link href="/partners/wpbs" className="font-medium text-mint-600 hover:underline">
+                Winter Park Benefit Shop →
+              </Link>
+            </p>
+          </section>
         </div>
       </Section>
     </article>

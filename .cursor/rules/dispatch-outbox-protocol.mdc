@@ -1,0 +1,16 @@
+---
+description: When the user mentions dispatch, execute outbox prompts end-to-end
+alwaysApply: true
+---
+
+# Dispatch protocol
+
+When the user says **dispatch** (or similar: “outbox”, “nudge cursor-dispatch”, “run the prompt in outbox”):
+
+1. **Locate prompts** in this repo at `cursor-dispatch/outbox/*.prompt.md`. If the active product is PhoneCasesForAll, also check `E:\Projects\phonecasesforall\cursor-dispatch\outbox\` when that workspace is in scope.
+2. **Pick one** using frontmatter: lowest `blockedBy`, then `priority` (P1 first), then `order` / filename. Do not start tasks that are operator-blocked on secrets without saying so in the inbox reply.
+3. **Implement** the checklist: follow `docs/SOLUTIONSTORE_SAAS_SPINE.md` §6 (six-section recipe) and §7 (visual tokens — `mint`, `ink`, `container-pricescout`, `btn-*`, `section-*`; no new ad-hoc palettes).
+4. **Verify** with `npm run typecheck`, `npm run test`, and `npm run build` when the dispatch asks for it.
+5. **Close the loop**: write `build/proof/<dispatch_id>.json`, write `cursor-dispatch/inbox/<reply or result file named in the prompt>`, move the prompt `outbox` → `done`, commit if the user expects git hygiene.
+
+If the outbox is empty, say so briefly and stop.

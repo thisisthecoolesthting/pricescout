@@ -115,3 +115,16 @@ model Scan {
   user                 User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   device               Device?  @relation(fields: [deviceId], references: [id])
 }
+
+/// Partner-only support requests (e.g. WPBS staff). Queryable for a future /admin/partners inbox.
+model PartnerSupportTicket {
+  id         String    @id @default(cuid())
+  partner    String
+  name       String
+  role       String?
+  email      String
+  message    String
+  createdAt  DateTime  @default(now())
+  resolvedAt DateTime?
+  resolvedBy String?
+}

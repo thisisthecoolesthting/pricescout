@@ -1,0 +1,23 @@
+{
+  "dispatch_id": "PRICESCOUT-WPBS-PARTNER-PAGE-019",
+  "commit": "f40ef4dc88fe7634e8421dd0ba4f7a2ca459acec",
+  "summary": "/partners/wpbs partner toolkit: six sections, HeroScanFlowEmbed, claim steps with images, embedded tour video, FAQ, support form → POST /api/partners/wpbs/support → PartnerSupportTicket. About page partner link. noindex metadata.",
+  "routes": ["/partners/wpbs", "/about", "/api/partners/wpbs/support"],
+  "migration": "20260509153000_partner_support_tickets",
+  "verification": {
+    "npm_run_typecheck": "exit 0",
+    "npm_run_test": "exit 0",
+    "npm_run_build": "exit 0"
+  },
+  "screenshots": "Not captured in-agent; operator: open /partners/wpbs and /about (desktop + narrow viewport) or run Playwright against local/staging.",
+  "files_touched": [
+    "prisma/schema.prisma",
+    "prisma/migrations/20260509153000_partner_support_tickets/migration.sql",
+    "src/app/partners/wpbs/page.tsx",
+    "src/app/api/partners/wpbs/support/route.ts",
+    "src/app/about/page.tsx",
+    "src/components/marketing/HeroScanFlowEmbed.tsx",
+    "src/components/partners/WpbsSupportForm.tsx",
+    ".cursor/rules/dispatch-outbox-protocol.mdc"
+  ]
+}
