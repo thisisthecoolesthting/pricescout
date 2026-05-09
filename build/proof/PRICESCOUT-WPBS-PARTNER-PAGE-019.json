@@ -1,6 +1,7 @@
 {
   "dispatch_id": "PRICESCOUT-WPBS-PARTNER-PAGE-019",
-  "commit": "15d2dc259ebb87c01d840c410a5fdec4e9b8fbda",
+  "commit": "80f36fb",
+  "feature_merge": "15d2dc259ebb87c01d840c410a5fdec4e9b8fbda",
   "summary": "/partners/wpbs partner toolkit: six sections, HeroScanFlowEmbed, claim steps with images, embedded tour video, FAQ, support form → POST /api/partners/wpbs/support → PartnerSupportTicket. About page partner link. noindex metadata.",
   "routes": ["/partners/wpbs", "/about", "/api/partners/wpbs/support"],
   "migration": "20260509153000_partner_support_tickets",
