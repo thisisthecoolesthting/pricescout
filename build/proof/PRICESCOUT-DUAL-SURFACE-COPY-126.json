@@ -1,0 +1,10 @@
+{
+  "dispatch_id": "PRICESCOUT-DUAL-SURFACE-COPY-126",
+  "branch": "master",
+  "completed_at": "2026-05-09T02:32:00.000Z",
+  "depends_on": ["PRICESCOUT-BOOTSTRAP-STANDALONE-001"],
+  "summary": "126 parity with 002 was already in tree; closed gaps: optional heroImage in SpineSixSections (marketplace + browser-scanner), browser-scanner final CTA primary → /scan, typed finalCta button overrides.",
+  "build": { "command": "npm run build", "result": "pass", "exit_code": 0 },
+  "visual_diff": { "note": "Spot /features/browser-scanner hero + dark CTA buttons." },
+  "operator_followups": []
+}

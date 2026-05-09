@@ -77,6 +77,12 @@ const pages: Record<FeatureSlug, SpineSixModel> = {
     subtitle:
       "Open /scan in Chrome or Edge, allow camera access, and use your built-in webcam, USB overhead camera, or POS cam — same verdict UI as the phone app. Each registered browser counts as one of your four included scanner installs.",
     trustStrip: commonTrust,
+    heroImage: {
+      src: "/images/hero-laptop-webcam.jpg",
+      alt: "Laptop at a thrift triage table running PriceScout in the browser with an overhead webcam",
+      width: 880,
+      height: 587,
+    },
     problem: {
       title: "Problem it solves",
       body: "Back-room triage tables already have a laptop — crews should not need a second workflow just to price donations.",
@@ -119,6 +125,10 @@ const pages: Record<FeatureSlug, SpineSixModel> = {
       title: "Try the browser scanner now — no install",
       subtitle: "Open /scan on any crew laptop with a webcam and run a real identification in the public sandbox.",
       pricingLine: "$29 Week Pass · $49/mo Pro · $699 Founders Lifetime (cap 100)",
+      primaryHref: "/scan",
+      primaryLabel: "Open the scanner",
+      secondaryHref: "/pricing",
+      secondaryLabel: "See pricing",
     },
   },
   "marketplace-helper": {

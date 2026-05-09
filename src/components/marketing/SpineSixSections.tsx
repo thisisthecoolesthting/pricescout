@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { FAQ } from "@/components/FAQ";
 import { Card } from "@/components/marketing/Card";
@@ -25,7 +26,15 @@ export interface SpineSixModel {
   faq: { q: string; a: string }[];
   relatedFeatures: { label: string; href: string }[];
   relatedIndustries: { label: string; href: string }[];
-  finalCta: { title: string; subtitle: string; pricingLine: string };
+  finalCta: {
+    title: string;
+    subtitle: string;
+    pricingLine: string;
+    primaryHref?: string;
+    primaryLabel?: string;
+    secondaryHref?: string;
+    secondaryLabel?: string;
+  };
 }
 
 export function SpineSixSections({ model }: { model: SpineSixModel }) {
@@ -48,18 +57,18 @@ export function SpineSixSections({ model }: { model: SpineSixModel }) {
               Watch demo
             </Link>
           </div>
-          {model.heroImage && (
-            <div className="mt-12 max-w-2xl">
-              <img
+          {model.heroImage ? (
+            <div className="mt-12 max-w-3xl">
+              <Image
                 src={model.heroImage.src}
                 alt={model.heroImage.alt}
                 width={model.heroImage.width}
                 height={model.heroImage.height}
                 className="w-full rounded-2xl border border-line shadow-lg"
-                loading="eager"
+                priority
               />
             </div>
-          )}
+          ) : null}
         </div>
       </section>
 
@@ -139,10 +148,10 @@ export function SpineSixSections({ model }: { model: SpineSixModel }) {
           <h2 className="mb-4 text-3xl font-bold tracking-tight">{model.finalCta.title}</h2>
           <p className="mb-8 text-lg text-slate-300">{model.finalCta.subtitle}</p>
           <CtaBanner
-            primaryHref="/trial"
-            primaryLabel="Create account"
-            secondaryHref="/watch"
-            secondaryLabel="Watch demo"
+            primaryHref={model.finalCta.primaryHref ?? "/trial"}
+            primaryLabel={model.finalCta.primaryLabel ?? "Create account"}
+            secondaryHref={model.finalCta.secondaryHref ?? "/watch"}
+            secondaryLabel={model.finalCta.secondaryLabel ?? "Watch demo"}
           />
           <p className="mt-8 text-xs font-medium uppercase tracking-wide text-mint-300">
             {model.finalCta.pricingLine}
