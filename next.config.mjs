@@ -1,20 +1,5 @@
-import bundleAnalyzer from "@next/bundle-analyzer";
-import { fileURLToPath } from "node:url";
-import { dirname } from "node:path";
-
-const __dirname = dirname(fileURLToPath(import.meta.url));
-
-const withBundleAnalyzer = bundleAnalyzer({
-  enabled: process.env.ANALYZE === "true",
-});
-
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
-  outputFileTracingRoot: __dirname,
-  experimental: {
-    serverActions: { bodySizeLimit: "10mb" },
-  },
-};
-
-export default withBundleAnalyzer(nextConfig);
+import bundleAnalyzer from "@next/bundle-analyzer"; const withBundleAnalyzer=bundleAnalyzer({enabled:process.env.ANALYZE==="true"});
+const securityHeaders=[{key:"X-Content-Type-Options",value:"nosniff"},{key:"Referrer-Policy",value:"strict-origin-when-cross-origin"},{key:"X-Frame-Options",value:"DENY"},{key:"Permissions-Policy",value:"camera=(), microphone=(), geolocation=()"},{key:"Content-Security-Policy",value:"default-src 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"}];
+const nextConfig={reactStrictMode:true,async headers(){return[{source:"/(.*)",headers:securityHeaders}]},async redirects(){return[
+{source:"/pricing",destination:"/compare",permanent:true},{source:"/features",destination:"/compare",permanent:true},{source:"/faq",destination:"/guides/choose-time-clock",permanent:true},{source:"/blog",destination:"/guides/choose-time-clock",permanent:true},{source:"/resources",destination:"/guides/choose-time-clock",permanent:true},{source:"/how-it-works",destination:"/methodology",permanent:true},{source:"/privacy",destination:"/legal/privacy",permanent:true},{source:"/terms",destination:"/legal/terms",permanent:true},{source:"/features/:path*",destination:"/compare",permanent:true},{source:"/blog/:path*",destination:"/guides/choose-time-clock",permanent:true},{source:"/resources/:path*",destination:"/guides/choose-time-clock",permanent:true},{source:"/industries/:path*",destination:"/best/small-business",permanent:true},{source:"/compare/vs-googling-it",destination:"/compare",permanent:true},{source:"/compare/vs-pricecharting",destination:"/compare",permanent:true},{source:"/compare/vs-ebay-research-app",destination:"/compare",permanent:true}
+]}}; export default withBundleAnalyzer(nextConfig);
