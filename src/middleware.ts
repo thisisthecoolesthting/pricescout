@@ -1,32 +1,3 @@
-import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
-import { verifySessionTokenEdge } from "@/lib/session";
-
-export async function middleware(req: NextRequest) {
-  const secret = process.env.PS_SESSION_SECRET;
-  if (!secret || secret.length < 16) {
-    return NextResponse.redirect(new URL("/login?error=config", req.url));
-  }
-
-  const token = req.cookies.get("ps_session")?.value;
-  if (!token) {
-    const next = `${req.nextUrl.pathname}${req.nextUrl.search}`;
-    return NextResponse.redirect(
-      new URL(`/login?next=${encodeURIComponent(next)}`, req.url),
-    );
-  }
-
-  const claims = await verifySessionTokenEdge(token, secret);
-  if (!claims) {
-    const next = `${req.nextUrl.pathname}${req.nextUrl.search}`;
-    return NextResponse.redirect(
-      new URL(`/login?next=${encodeURIComponent(next)}`, req.url),
-    );
-  }
-
-  return NextResponse.next();
-}
-
-export const config = {
-  matcher: ["/admin/:path*"],
-};
+import {NextResponse} from "next/server"; import type {NextRequest} from "next/server";
+export function middleware(req:NextRequest){const path=req.nextUrl.pathname;if(path.startsWith("/api/")||path.startsWith("/admin")||path.startsWith("/scan")||path.startsWith("/login")||path.startsWith("/trial")||path.startsWith("/billing")||path.startsWith("/invite")||path.startsWith("/forgot-password")||path.startsWith("/partners/wpbs")){return new NextResponse("This former PriceScout product route has been retired.",{status:410,headers:{"Content-Type":"text/plain; charset=utf-8","Cache-Control":"public, max-age=86400"}})}return NextResponse.next()}
+export const config={matcher:["/api/:path*","/admin/:path*","/scan/:path*","/login","/trial","/billing/:path*","/invite/:path*","/forgot-password","/partners/wpbs"]};
